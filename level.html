@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Level — AGSAPAULA</title>
+<meta name="description" content="Game project case study by Angelo Sapaula, Unity gameplay programmer.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%231F6FEB'/%3E%3Ctext x='8' y='12' font-size='9' text-anchor='middle' fill='white' font-family='monospace' font-weight='bold'%3EAG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="btn btn-ghost" id="backMap" href="index.html">◀ <span class="hide-sm">WORLD </span>MAP</a>
+    <div class="topbar-mid">
+      <span class="px" id="tbLevel" style="font-size:10px;color:#3FB950">LEVEL 1</span>
+      <span class="px" id="tbTitle" style="font-size:10px;color:#fff"></span>
+    </div>
+    <div class="topbar-right">
+      <a class="btn btn-ghost sq" id="tbPrev" href="#" aria-label="Previous level">◀</a>
+      <a class="btn btn-ghost sq" id="tbNext" href="#" aria-label="Next level">▶</a>
+      <button type="button" class="btn btn-ghost sq hide-sm" id="soundBtn" aria-label="Turn chiptune sound on"><span data-sound-text>SOUND OFF</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="level" class="entering">
+  <section class="lv-hero" aria-label="Level intro">
+    <div class="sea-waves" aria-hidden="true"></div>
+    <div class="lv-hero-in">
+      <div class="lv-hero-text">
+        <span class="px" id="hWorld" style="font-size:11px;color:#79C0FF;letter-spacing:.15em"></span>
+        <h1 id="hTitle"></h1>
+        <p class="lead" id="hLead"></p>
+        <div class="facts" id="hFacts"></div>
+        <div class="hero-actions">
+          <a class="btn btn-white" href="#cutscene" style="font-size:11px;padding:16px 18px">▶ WATCH GAMEPLAY</a>
+          <a class="btn btn-blue" id="hPlay" href="#" target="_blank" rel="noopener" style="font-size:11px;padding:16px 18px" hidden>PLAY IT</a>
+          <a class="btn btn-ghost" id="hCode" href="#source" style="font-size:11px;padding:16px 18px">SOURCE CODE</a>
+        </div>
+      </div>
+      <div class="lv-hero-art">
+        <div class="cover-frame" id="hCover" role="img"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="cutscene" aria-label="Gameplay video">
+    <div class="container">
+      <div class="sec-row"><span class="sec-label" style="color:#58A6FF">▶ CUTSCENE</span><span style="font-size:13px;color:#8B949E">Gameplay footage</span></div>
+      <div class="tv-frame"><div class="video-box" id="videoBox"></div></div>
+    </div>
+  </section>
+
+  <section class="section reveal" aria-label="Quest log" style="padding-top:8px">
+    <div class="container quest">
+      <div class="quest-l"><span class="sec-label" style="color:#58A6FF">QUEST LOG</span><h2>The mission</h2></div>
+      <div class="quest-r panel">
+        <p id="qDesc"></p>
+        <div class="contrib" id="qContribWrap"><span>MY ROLE</span><p id="qContrib" style="margin:0;font-size:15px;line-height:1.65;color:#C9D1D9"></p></div>
+        <div class="tags" id="qTags"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" aria-label="Abilities unlocked" style="padding-top:8px">
+    <div class="container">
+      <span class="sec-label" style="color:#3FB950">★ ABILITIES UNLOCKED · FEATURES</span>
+      <div class="grid-auto" id="abilities"></div>
+    </div>
+  </section>
+
+  <section class="stats-band reveal" id="statsSec" aria-label="Results" hidden>
+    <div class="container section">
+      <span class="sec-label" style="color:#58A6FF">LEVEL STATS · RESULTS</span>
+      <div class="grid-auto" id="stats" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))"></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="bossSec" aria-label="Hardest problem" hidden>
+    <div class="container">
+      <span class="sec-label" style="color:#F85149">!! BOSS FIGHT · HARDEST PROBLEM</span>
+      <div class="boss-box">
+        <div><span style="color:#F85149">1 · THE PROBLEM</span><p id="bProblem"></p></div>
+        <div><span style="color:#58A6FF">2 · THE STRATEGY</span><p id="bStrategy"></p></div>
+        <div><span style="color:#3FB950">3 · XP GAINED</span><p id="bLesson"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" aria-label="Screenshots">
+    <div class="container">
+      <div class="sec-row"><span class="sec-label" style="color:#E3C27A">◆ LOOT · SCREENSHOTS</span><span id="lootCount" style="font-size:13px;color:#8B949E"></span></div>
+      <div class="loot-wrap">
+        <button type="button" class="loot-main" id="lootMain" aria-label="Open screenshot full size"></button>
+        <div class="loot-grid" id="lootGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="source" aria-label="Source code">
+    <div class="container">
+      <div class="sec-row"><span class="sec-label" style="color:#A371F7">✦ SOURCE SCROLL · CODE</span><a id="ghLink" href="#" target="_blank" rel="noopener" style="font-size:14px;font-weight:600">My GitHub →</a></div>
+      <div class="code-box" id="codeBox">
+        <div class="code-tabs" role="tablist" aria-label="Files" id="codeTabs"></div>
+        <div class="code-head"><span id="codeTitle"></span><button type="button" class="copy" id="copyBtn">COPY</button></div>
+        <pre class="code" id="codePre"><code id="codeEl"></code></pre>
+      </div>
+      <p id="noCode" style="margin:0;color:#8B949E;font-size:15px" hidden>Code for this project is private — ask me about it in an interview.</p>
+    </div>
+  </section>
+
+  <section class="complete" aria-label="Level complete">
+    <div class="container complete-in">
+      <span class="px" style="font-size:clamp(20px,3.4vw,40px);color:#fff;text-shadow:4px 4px 0 #3FB950">LEVEL COMPLETE!</span>
+      <span style="font-size:15px;color:#C9D1D9">Continue your journey</span>
+      <div class="complete-row">
+        <a class="nav-card" id="cPrev" href="#"><span>◀ PREV LEVEL</span><b id="cPrevT"></b></a>
+        <a class="btn btn-blue" id="cMap" href="index.html">RETURN TO MAP</a>
+        <a class="nav-card next" id="cNext" href="#"><span>NEXT LEVEL ▶</span><b id="cNextT"></b></a>
+      </div>
+      <a href="bonus.html" class="px" style="font-size:9px;color:#E3C27A;text-decoration:none;margin-top:12px">★ SECRET: BONUS STAGE (3D ART &amp; ANIMATION) ▶</a>
+    </div>
+  </section>
+</main>
+
+<div class="modal lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
+  <div class="lb-in">
+    <img id="lbImg" alt="">
+    <div class="lb-bar">
+      <button type="button" class="modal-close" id="lbPrev" aria-label="Previous screenshot">◀</button>
+      <span class="px" id="lbCount" style="font-size:9px;color:#C9D1D9"></span>
+      <button type="button" class="modal-close" id="lbNext" aria-label="Next screenshot">▶</button>
+      <button type="button" class="modal-close" data-close aria-label="Close">✕</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/common.js"></script>
+<script src="js/level.js"></script>
+</body>
+</html>

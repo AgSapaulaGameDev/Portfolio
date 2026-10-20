@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bonus Stage — 3D Art &amp; Animation · AGSAPAULA</title>
+<meta name="description" content="3D models and animations by Angelo Sapaula.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23E3C27A'/%3E%3Ctext x='8' y='12' font-size='9' text-anchor='middle' fill='%23010409' font-family='monospace' font-weight='bold'%3EAG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<header class="topbar gold">
+  <div class="topbar-in">
+    <a class="btn btn-ghost" href="index.html">◀ <span class="hide-sm">WORLD </span>MAP</a>
+    <div class="topbar-mid"><span class="px" style="font-size:10px;color:#E3C27A">★ BONUS STAGE</span></div>
+    <div class="topbar-right">
+      <a class="btn btn-ghost" href="level.html">LEVELS ▶</a>
+      <button type="button" class="btn btn-ghost sq hide-sm" id="soundBtn" aria-label="Turn chiptune sound on"><span data-sound-text>SOUND OFF</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="bonus-hero" aria-label="Bonus stage intro">
+    <div id="stars" aria-hidden="true"></div>
+    <div class="bonus-hero-in">
+      <span class="px" style="font-size:11px;color:#E3C27A;animation:blink 1.2s steps(1) infinite">SECRET AREA FOUND!</span>
+      <h1>BONUS STAGE</h1>
+      <p class="display" style="margin:0;font-size:clamp(17px,2vw,20px);line-height:1.5;color:#C9D1D9;max-width:560px">3D models and animations I made in Maya and Blender, each shown as a collectible.</p>
+      <div class="tabs" role="tablist" aria-label="Collection" id="tabs"></div>
+      <span class="px" style="font-size:9px;color:#8B949E">INSPECTED <span id="got">0</span> / <span id="total">0</span></span>
+      <div style="width:min(420px,100%);height:14px;border:2px solid #E6EDF3;padding:2px"><div id="gotBar" style="height:100%;width:0;background:#E3C27A;transition:width .4s"></div></div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Inspect selected piece">
+    <div class="container inspect">
+      <div class="viewer">
+        <div class="viewer-main" id="viewer"></div>
+        <div class="viewer-thumbs" id="thumbs"></div>
+      </div>
+      <div class="details panel">
+        <span class="rarity" id="dRarity" style="align-self:flex-start"></span>
+        <h2 id="dTitle"></h2>
+        <div class="tags" id="dTags"></div>
+        <p id="dDesc"></p>
+        <ul id="dFeat"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Collection" style="padding-top:0">
+    <div class="container">
+      <span class="sec-label" style="color:#E3C27A">◆ COLLECTION</span>
+      <div class="collection" id="collection"></div>
+    </div>
+  </section>
+</main>
+
+<script src="js/data.js"></script>
+<script src="js/common.js"></script>
+<script src="js/bonus.js"></script>
+</body>
+</html>

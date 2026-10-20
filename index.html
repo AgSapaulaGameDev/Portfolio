@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AGSAPAULA — Unity Gameplay Programmer</title>
+<meta name="description" content="Angelo Sapaula — Unity gameplay programmer. Scroll to play through my portfolio.">
+<meta property="og:title" content="AGSAPAULA — Unity Gameplay Programmer">
+<meta property="og:description" content="Scroll to play through my game dev portfolio.">
+<meta property="og:image" content="TWCover.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%231F6FEB'/%3E%3Ctext x='8' y='12' font-size='9' text-anchor='middle' fill='white' font-family='monospace' font-weight='bold'%3EAG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+<noscript><p style="padding:24px">This portfolio is interactive. <a href="classic.html">Open the classic version</a>.</p></noscript>
+
+<main id="game">
+  <div id="stage">
+
+    <div aria-hidden="true" data-s="starStyle"></div>
+
+    <!-- ============ SCENE: CONSOLE BOOT ============ -->
+    <section aria-label="Console boot" data-s="sc.boot">
+      <div aria-hidden="true" style="position:absolute;left:0;right:0;top:74%;bottom:0;background:linear-gradient(#0B1220,#05080F);border-top:1px solid #1C2128"></div>
+      <div aria-hidden="true" style="position:absolute;left:50%;top:80%;width:70%;height:30%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(31,111,235,.22),transparent 70%)"></div>
+      <div data-s="rig">
+        <div class="tv-body"></div>
+        <div data-s="screen">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.07),transparent 40%)"></div>
+          <div data-s="bootContent">
+            <span class="px" style="font-size:9px;color:#79C0FF">GELO GAMES PRESENTS</span>
+            <span class="px boot-title">AGSAPAULA</span>
+            <div style="width:56%;height:12px;border:2px solid #fff;padding:2px"><div data-s="loadBar"></div></div>
+            <span class="px" data-s="pressStart">PRESS START</span>
+          </div>
+          <div data-s="crtLine"></div>
+          <div data-s="screenFlash"></div>
+          <div class="scanlines"></div>
+        </div>
+        <div style="position:absolute;left:19.2%;top:58.6%;width:61.4%;height:6%;display:flex;justify-content:space-between;align-items:center">
+          <span class="px" style="font-size:9px;color:#8B949E">AG·TV</span>
+          <span style="display:flex;gap:10px"><span style="width:18px;height:18px;border-radius:50%;background:#30363D;border:2px solid #484F58"></span><span style="width:18px;height:18px;border-radius:50%;background:#30363D;border:2px solid #484F58"></span></span>
+        </div>
+        <div class="console"></div>
+        <div style="position:absolute;left:24%;top:70%;width:52%;height:3%;border-bottom:2px solid #22272E"></div>
+        <div data-s="slot"></div>
+        <span class="px" style="position:absolute;left:28%;top:75%;font-size:9px;color:#C9D1D9">AG SYSTEM</span>
+        <div data-s="led"></div>
+        <span class="px" style="position:absolute;left:30.6%;top:81.6%;font-size:7px;color:#8B949E">POWER</span>
+        <div style="position:absolute;left:66%;top:80%;width:4%;height:3%;background:#010409;border:2px solid #22272E;border-radius:3px"></div>
+        <span class="px" style="position:absolute;left:63%;top:84.4%;font-size:6px;color:#8B949E">P1</span>
+        <div style="position:absolute;left:77%;top:86%;width:15%;height:9%;background:#2D333B;border:3px solid #484F58;border-radius:22px;display:flex;align-items:center;justify-content:space-between;padding:0 9%">
+          <span style="position:relative;width:22px;height:22px"><span style="position:absolute;left:7px;top:0;width:8px;height:22px;background:#010409"></span><span style="position:absolute;left:0;top:7px;width:22px;height:8px;background:#010409"></span></span>
+          <span style="display:flex;gap:5px"><span style="width:11px;height:11px;border-radius:50%;background:#F85149"></span><span style="width:11px;height:11px;border-radius:50%;background:#1F6FEB"></span></span>
+        </div>
+        <svg viewBox="0 0 760 600" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+          <path id="cable" d="M594 534 C 560 590, 516 572, 516 502" pathLength="1" fill="none" stroke="#6E7681" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 1" stroke-dashoffset="1"></path>
+          <rect id="plug" x="509" y="490" width="14" height="14" fill="#8B949E" fill-opacity="0"></rect>
+          <circle id="spark" cx="516" cy="490" r="6" fill="none" stroke="#79C0FF" stroke-width="3" stroke-opacity="0"></circle>
+        </svg>
+      </div>
+      <div class="boot-cap">
+        <span class="px" id="bootCaption" style="font-size:10px;color:#C9D1D9;background:rgba(1,4,9,.7);padding:8px 12px">SCROLL ▼ TO INSERT CARTRIDGE</span>
+      </div>
+    </section>
+
+    <!-- ============ SCENE: TITLE ============ -->
+    <section aria-label="Title screen" data-s="sc.title">
+      <div data-s="worldStyle">
+        <div style="position:absolute;inset:0;background:linear-gradient(#020812 0%,#0B2350 48%,#050B16 62%,#010409 100%)"></div>
+        <div aria-hidden="true" data-s="sunStyle"></div>
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true" data-s="farStyle">
+          <path id="farFill" fill="#071735"></path>
+          <path id="farD" fill="none" stroke="#58A6FF" stroke-width="1" stroke-opacity=".3"></path>
+        </svg>
+        <div aria-hidden="true" data-s="fogStyle"></div>
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true" data-s="nearStyle">
+          <path id="nearFill" fill="#030A16"></path>
+          <path id="nearD" fill="none" stroke="#79C0FF" stroke-width="1.2" stroke-opacity=".6"></path>
+        </svg>
+        <div aria-hidden="true" data-s="dustStyle"></div>
+        <div class="title-text" data-s="titleText">
+          <span class="px" style="font-size:11px;letter-spacing:.2em;color:#C9D1D9">A GAMEPLAY PROGRAMMER PRESENTS</span>
+          <h1>AGSAPAULA</h1>
+          <p>Unity gameplay programmer. Systems that feel good to play.</p>
+        </div>
+        <div data-s="scrollCue">
+          <span class="mouse" aria-hidden="true"><span></span></span>
+          <span class="px" style="font-size:9px;animation:blink 1.1s steps(1) infinite">SCROLL TO START</span>
+        </div>
+      </div>
+      <div aria-hidden="true" data-s="coreStyle"></div>
+      <div aria-hidden="true" data-s="streakStyle"></div>
+      <div aria-hidden="true" id="powder" style="position:absolute;inset:0;pointer-events:none;overflow:hidden"></div>
+    </section>
+
+    <!-- Cartridge (shares the console rig box) -->
+    <div aria-hidden="true" data-s="cartRig">
+      <div data-s="cart">
+        <div data-s="cartBob">
+          <div style="width:100%;height:100%;perspective:700px">
+            <div data-s="cartSpin">
+              <div class="cart-face">
+                <div style="width:100%;display:flex;flex-direction:column;gap:3px"><span style="height:3px;background:#22272E"></span><span style="height:3px;background:#22272E"></span><span style="height:3px;background:#22272E"></span></div>
+                <div class="cart-label">
+                  <span class="px" style="font-size:18px;color:#fff;text-shadow:2px 2px 0 #0D2A5C">AG</span>
+                  <span class="px" style="font-size:5px;color:#E6EDF3">GELO GAMES</span>
+                </div>
+                <div style="position:absolute;left:22%;right:22%;bottom:0;height:9%;background:#22272E"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SCENE: PLAYER SELECT ============ -->
+    <section aria-label="Player select — about me" data-s="sc.player">
+      <div class="wrap">
+        <span class="stage-label" style="color:#58A6FF">STAGE 1 · PLAYER SELECT</span>
+        <div class="ps-row">
+          <div class="ps-card">
+            <div class="ps-portrait" id="portrait" role="img" aria-label="Portrait of Angelo Sapaula"></div>
+            <div class="ps-meta" style="display:flex;flex-direction:column;gap:10px">
+              <div class="px" style="font-size:14px;color:#fff;text-align:center">GELO</div>
+              <div style="display:flex;justify-content:center;gap:8px"><span class="px" style="font-size:9px;padding:6px 8px;background:#1F6FEB;color:#fff">P1</span><span class="px" style="font-size:9px;padding:6px 8px;border:2px solid #3FB950;color:#3FB950">READY</span></div>
+            </div>
+          </div>
+          <div class="ps-info">
+            <h2>Angelo "Gelo" Sapaula</h2>
+            <div class="stat3">
+              <div><div class="k">CLASS</div><div class="v">Gameplay Programmer</div></div>
+              <div><div class="k">XP</div><div class="v">~5 yrs Unity</div></div>
+              <div><div class="k">GUILDS</div><div class="v">2 studios</div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span class="px" style="font-size:9px;color:#8B949E">PERKS</span>
+              <div class="perks">
+                <span>NavMesh Whisperer · enemy AI</span>
+                <span>Feel Tuner · player controllers</span>
+                <span>RTP Mathematician · slot systems</span>
+                <span>Artist's Eye · Maya &amp; Blender</span>
+              </div>
+            </div>
+            <div class="inv-block">
+              <span class="px" style="font-size:9px;color:#8B949E">INVENTORY</span>
+              <div class="inv" id="inventory"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCENE: WORLD MAP (projects) ============ -->
+    <section aria-label="World map of projects" data-s="sc.world">
+      <div class="sea-waves" aria-hidden="true"></div>
+      <div aria-hidden="true" data-s="farIslandStrip" id="farIslands"></div>
+      <div class="map-head">
+        <span class="stage-label" style="color:#58A6FF">STAGE 2 · WORLD MAP</span>
+        <span style="display:flex;gap:16px;align-items:baseline;flex-wrap:wrap"><span class="px" style="font-size:10px;color:#8B949E">LEVEL <span id="levelNo">1</span> / <span id="levelCount">8</span></span><a class="px" href="bonus.html" style="font-size:9px;color:#E3C27A;text-decoration:none">★ BONUS STAGE ▶</a></span>
+      </div>
+      <div class="track-window">
+        <div data-s="trackStyle" id="track">
+          <svg id="trackSvg" height="276" style="position:absolute;left:0;top:0;overflow:visible" aria-hidden="true">
+            <path id="pathBase" fill="none" stroke="#E3C27A" stroke-opacity=".55" stroke-width="6" stroke-dasharray="2 12" stroke-linecap="round"></path>
+            <path id="pathDone" pathLength="1" fill="none" stroke="#3FB950" stroke-width="7" stroke-linecap="round" stroke-dasharray="1 1" stroke-dashoffset="1" style="filter:drop-shadow(0 0 6px rgba(63,185,80,.7))"></path>
+          </svg>
+        </div>
+        <svg width="34" height="40" viewBox="0 0 17 20" data-s="markerStyle" aria-hidden="true">
+          <rect x="5" y="0" width="7" height="3" fill="#1F6FEB"/><rect x="4" y="3" width="9" height="6" fill="#87CEEB"/><rect x="4" y="3" width="9" height="2" fill="#1F6FEB"/><rect x="6" y="6" width="1" height="1" fill="#010409"/><rect x="10" y="6" width="1" height="1" fill="#010409"/><rect x="5" y="9" width="7" height="6" fill="#1F6FEB"/><rect x="3" y="10" width="2" height="4" fill="#87CEEB"/><rect x="12" y="10" width="2" height="4" fill="#87CEEB"/><rect x="5" y="15" width="3" height="4" fill="#0D2A5C"/><rect x="9" y="15" width="3" height="4" fill="#0D2A5C"/>
+        </svg>
+      </div>
+      <div aria-hidden="true" data-s="cloudStrip" id="clouds"></div>
+      <div class="map-card-area">
+        <div class="map-card" id="mapCard">
+          <a class="map-thumb" id="lvlThumb" href="#" aria-label="Watch gameplay">
+            <span class="play"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="rgba(31,111,235,.6)"/><polygon points="10,8 16,12 10,16" fill="#fff"/></svg></span>
+          </a>
+          <div class="map-info">
+            <span class="px" id="lvlKind" style="font-size:10px;color:#3FB950"></span>
+            <h3 id="lvlTitle"></h3>
+            <p id="lvlBlurb"></p>
+            <div class="built" id="lvlBuilt"></div>
+            <div class="map-actions">
+              <a class="btn btn-blue" id="lvlEnter" href="#">ENTER LEVEL</a>
+              <a class="btn btn-white" id="lvlWatch" href="#">▶ WATCH</a>
+              <span id="lvlRole" style="font-size:13px;color:#8B949E"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCENE: BOSS (studio work) ============ -->
+    <section aria-label="Boss level: studio work" data-s="sc.boss">
+      <div aria-hidden="true" data-s="flash"></div>
+      <div class="wrap" data-s="shake">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px">
+          <span class="stage-label" style="color:#F85149;animation:blink 1.4s steps(1) infinite">!! STAGE 3 · BOSS LEVEL</span>
+          <div style="display:flex;align-items:center;gap:10px;flex:0 1 420px">
+            <span class="px" style="font-size:9px;color:#8B949E">QUEST</span>
+            <div style="flex:1;height:14px;border:2px solid #E6EDF3;background:#010409;padding:2px"><div data-s="bossBar"></div></div>
+          </div>
+        </div>
+        <div style="flex:1;min-height:0;display:flex;flex-wrap:wrap;gap:28px;align-items:stretch">
+          <div class="boss-art" aria-hidden="true">
+            <svg class="potion" viewBox="0 0 18 22" style="shape-rendering:crispEdges">
+              <rect x="7" y="0" width="4" height="2" fill="#A0522D"/><rect x="6" y="2" width="6" height="4" fill="#C9D1D9"/><rect x="3" y="6" width="12" height="2" fill="#C9D1D9"/><rect x="1" y="8" width="16" height="12" fill="#C9D1D9"/><rect x="2" y="10" width="14" height="10" fill="#A371F7"/><rect x="3" y="9" width="12" height="2" fill="#D2A8FF"/><rect x="4" y="12" width="2" height="2" fill="#fff"/><rect x="3" y="20" width="12" height="2" fill="#C9D1D9"/>
+            </svg>
+            <span class="px" style="font-size:clamp(16px,2vw,24px);color:#fff;text-shadow:3px 3px 0 #A371F7">POTION PUNCH 2</span>
+            <span class="px" style="font-size:8px;color:#C9D1D9">MONSTRONAUTS · UNITY</span>
+          </div>
+          <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:14px">
+            <span class="px" style="font-size:10px;color:#3FB950">STUDIO RAID · SHIPPED TEAM GAME</span>
+            <h2 class="display" style="margin:0;font-size:clamp(30px,3.4vw,46px)">Potion Punch 2</h2>
+            <p style="margin:0;color:#C9D1D9;font-size:15px">Guild: Monstronauts · Game Developer Engineering Intern · 6 months</p>
+            <span class="px" style="font-size:9px;color:#8B949E;padding-top:6px">LOOT</span>
+            <div class="loot">
+              <div><b>+UI</b>Fixed UI bugs on the live team project, including tooltip layout and wrapping in a custom TooltipSource script</div>
+              <div><b>+L10N</b>Wired Unity Localization smart strings (shop names, level numbers) through to in-game text</div>
+              <div><b>+GIT</b>Team Git workflow: feature branches, rebases, and resolving prefab and asset merge conflicts</div>
+            </div>
+            <div style="padding:12px 14px;border:1px dashed #484F58;font-size:14px;color:#C9D1D9;line-height:1.5"><span class="px" style="font-size:9px;color:#58A6FF">SIDE QUEST</span>&nbsp; Lamina Studios · Unreal: enemy AI, player movement, navigation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCENE: CREDITS + CONTACT ============ -->
+    <section aria-label="Credits and contact" data-s="sc.credits">
+      <div class="credits-roll" data-s="creditsRoll">
+        <span class="px" style="font-size:12px;color:#58A6FF">THANKS FOR PLAYING</span>
+        <div><div class="k">DESIGN · CODE · ART</div><div class="display" style="margin-top:10px;font-size:28px">Angelo Sapaula</div></div>
+        <div><div class="k">ENGINES</div><div class="v">Unity · Unreal · Godot · MonoGame</div></div>
+        <div><div class="k">TOOLS</div><div class="v">C# · C++ · Python · Maya · Blender · Substance Painter</div></div>
+        <div><div class="k">SPECIAL THANKS</div><div class="v">Monstronauts · Lamina Studios</div></div>
+      </div>
+      <div data-s="continueStyle">
+        <span class="px" style="font-size:clamp(22px,4vw,44px);color:#fff;text-shadow:4px 4px 0 #1F6FEB">CONTINUE?</span>
+        <span class="px" id="countdown" style="font-size:40px;color:#F85149">9</span>
+        <p class="display" style="margin:0;font-size:22px;color:#C9D1D9;text-align:center">Hiring a Unity developer? Insert coin.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+          <button type="button" class="btn btn-blue" id="hireBtn" style="font-size:11px;padding:16px 18px">HIRE ME</button>
+          <a class="btn btn-white" id="cvBtn" href="#" download style="font-size:11px;padding:16px 18px;box-shadow:4px 4px 0 #000">SAVE FILE (CV)</a>
+        </div>
+        <div class="links" id="socialLinks"></div>
+      </div>
+    </section>
+
+    <!-- ============ HUD ============ -->
+    <header class="hud">
+      <div class="hud-left">
+        <span class="px" style="font-size:11px;color:#fff">LV <span id="levelHud">1</span></span>
+        <span class="px scene-name" id="sceneName" style="font-size:9px;color:#8B949E">TITLE SCREEN</span>
+      </div>
+      <div class="hud-xp" aria-hidden="true">
+        <span class="px" style="font-size:9px;color:#3FB950">XP</span>
+        <div class="bar"><div data-s="xpBar"></div></div>
+      </div>
+      <a class="quick" id="quickView" href="classic.html">Quick view ↗</a>
+    </header>
+
+    <button type="button" class="sound-btn" id="soundBtn" aria-pressed="false" aria-label="Turn chiptune sound on">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="4,9 8,9 13,5 13,19 8,15 4,15" fill="#E6EDF3"/></svg>
+      <span class="eq" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="px" id="soundText" style="font-size:8px">SOUND OFF</span>
+    </button>
+
+    <nav class="jumps" id="jumps" aria-label="Jump to stage"></nav>
+  </div>
+</main>
+
+<!-- Contact modal -->
+<div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+  <form class="modal-box" id="contactForm">
+    <div class="modal-head">
+      <span class="px" id="contactTitle" style="font-size:12px;color:#fff">PLAYER 2 HAS ENTERED</span>
+      <button type="button" class="modal-close" data-close aria-label="Close">✕</button>
+    </div>
+    <p style="margin:0;color:#C9D1D9;font-size:15px">Send me a message and I'll get back to you. You can also email <a id="mailLink" href="#"></a>.</p>
+    <div class="field"><label for="cName">NAME</label><input id="cName" name="name" autocomplete="name" required></div>
+    <div class="field"><label for="cEmail">EMAIL</label><input id="cEmail" name="email" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="cMsg">MESSAGE</label><textarea id="cMsg" name="message" required></textarea></div>
+    <div class="form-status" id="formStatus" role="status"></div>
+    <button type="submit" class="btn btn-blue" style="align-self:flex-start">SEND ▶</button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/common.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
