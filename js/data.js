@@ -7,8 +7,8 @@ window.SITE = {
   "handle": "AGSAPAULA",
   "email": "agsapaula@outlook.com",
   "phone": "09774619693",
-  "resume": "Resume_AgSapaula.pdf",
-  "portrait": "ProfilePicture.png",
+  "resume": "Photos/Resume_AgSapaula.pdf",
+  "portrait": "Photos/ProfilePicture.png",
   "github": "https://github.com/agsapaulagamedev",
   "linkedin": "",
   "itch": "",
@@ -33,7 +33,7 @@ window.GAMES = [
       "Payline win evaluation",
       "RTP-balanced symbol weights and paytable"
     ],
-    "cover": "TWCover.jpg",
+    "cover": "Photos/Tidal%20Wins/TWCover.jpg",
     "tags": [
       "Unity",
       "Slot Game",
@@ -51,11 +51,11 @@ window.GAMES = [
       "Built in Unity using C#"
     ],
     "images": [
-      "TW1.jpg",
-      "TW2.jpg",
-      "TW3.jpg",
-      "TW4.jpg",
-      "TW5.jpg"
+      "Photos/Tidal%20Wins/TW1.jpg",
+      "Photos/Tidal%20Wins/TW2.jpg",
+      "Photos/Tidal%20Wins/TW3.jpg",
+      "Photos/Tidal%20Wins/TW4.jpg",
+      "Photos/Tidal%20Wins/TW5.jpg"
     ],
     "video": "13m7U7xmNIp-weRFKHTUcbEN8m5mvcYG_",
     "code": [],
@@ -74,7 +74,7 @@ window.GAMES = [
       "Customer interaction system",
       "UI/UX and store customization"
     ],
-    "cover": "M2.png",
+    "cover": "Photos/Minatamis/M2.png",
     "tags": [
       "Unity",
       "Simulation",
@@ -92,15 +92,15 @@ window.GAMES = [
       "Optimized for PC with intuitive controls"
     ],
     "images": [
-      "M1.png",
-      "M2.png",
-      "M3.png",
-      "M4.png",
-      "M5.png",
-      "M6.png",
-      "M7.png",
-      "M8.png",
-      "M9.png"
+      "Photos/Minatamis/M1.png",
+      "Photos/Minatamis/M2.png",
+      "Photos/Minatamis/M3.png",
+      "Photos/Minatamis/M4.png",
+      "Photos/Minatamis/M5.png",
+      "Photos/Minatamis/M6.png",
+      "Photos/Minatamis/M7.png",
+      "Photos/Minatamis/M8.png",
+      "Photos/Minatamis/M9.png"
     ],
     "video": "16shUrsRO9GCC2So1PiTnQIcWvtAeX_ZX",
     "code": [],
@@ -119,7 +119,7 @@ window.GAMES = [
       "Weapon, ammo and reload system",
       "Freeze and poison status effects"
     ],
-    "cover": "AS11.jpg",
+    "cover": "Photos/Agent%20Snow/AS11.jpg",
     "tags": [
       "Unity",
       "Stealth Action"
@@ -134,19 +134,19 @@ window.GAMES = [
       "Resource management and time-based challenges"
     ],
     "images": [
-      "AS1.jpg",
-      "AS2.jpg",
-      "AS3.jpg",
-      "AS4.jpg",
-      "AS5.jpg",
-      "AS6.jpg",
-      "AS7.jpg",
-      "AS8.jpg",
-      "AS9.jpg",
-      "AS10.jpg",
-      "AS11.jpg",
-      "AS12.jpg",
-      "AS13.jpg"
+      "Photos/Agent%20Snow/AS1.jpg",
+      "Photos/Agent%20Snow/AS2.jpg",
+      "Photos/Agent%20Snow/AS3.jpg",
+      "Photos/Agent%20Snow/AS4.jpg",
+      "Photos/Agent%20Snow/AS5.jpg",
+      "Photos/Agent%20Snow/AS6.jpg",
+      "Photos/Agent%20Snow/AS7.jpg",
+      "Photos/Agent%20Snow/AS8.jpg",
+      "Photos/Agent%20Snow/AS9.jpg",
+      "Photos/Agent%20Snow/AS10.jpg",
+      "Photos/Agent%20Snow/AS11.jpg",
+      "Photos/Agent%20Snow/AS12.jpg",
+      "Photos/Agent%20Snow/AS13.jpg"
     ],
     "video": "1x09YcBf93kI7i_ClkoJMKIxbcUKMwRzt",
     "code": [
@@ -232,7 +232,7 @@ window.GAMES = [
       "Collectible-driven progression",
       "Pixel art assets"
     ],
-    "cover": "PZ14.jpg",
+    "cover": "Photos/Pixel%20Z/PZ14.jpg",
     "tags": [
       "Unity",
       "2D Platformer"
@@ -247,20 +247,20 @@ window.GAMES = [
       "Gradually increasing difficulty that rewards skill and exploration"
     ],
     "images": [
-      "PZ1.jpg",
-      "PZ2.jpg",
-      "PZ3.jpg",
-      "PZ4.jpg",
-      "PZ5.jpg",
-      "PZ6.jpg",
-      "PZ7.jpg",
-      "PZ8.jpg",
-      "PZ9.jpg",
-      "PZ10.jpg",
-      "PZ11.jpg",
-      "PZ12.jpg",
-      "PZ13.jpg",
-      "PZ14.jpg"
+      "Photos/Pixel%20Z/PZ1.jpg",
+      "Photos/Pixel%20Z/PZ2.jpg",
+      "Photos/Pixel%20Z/PZ3.jpg",
+      "Photos/Pixel%20Z/PZ4.jpg",
+      "Photos/Pixel%20Z/PZ5.jpg",
+      "Photos/Pixel%20Z/PZ6.jpg",
+      "Photos/Pixel%20Z/PZ7.jpg",
+      "Photos/Pixel%20Z/PZ8.jpg",
+      "Photos/Pixel%20Z/PZ9.jpg",
+      "Photos/Pixel%20Z/PZ10.jpg",
+      "Photos/Pixel%20Z/PZ11.jpg",
+      "Photos/Pixel%20Z/PZ12.jpg",
+      "Photos/Pixel%20Z/PZ13.jpg",
+      "Photos/Pixel%20Z/PZ14.jpg"
     ],
     "video": "1EyNT7vtar1VHJm5wV0ESRMCBf1kkAvFp",
     "code": [
@@ -310,7 +310,7 @@ window.GAMES = [
       "Level, spawn and timer system",
       "Lives and bomb hazard mechanic"
     ],
-    "cover": "TusokPreview.png",
+    "cover": "Photos/Tusok-Tusok/TusokPreview.png",
     "tags": [
       "Unity",
       "Game Design",
@@ -324,16 +324,16 @@ window.GAMES = [
       "Sweet Items: Bananaque, Kamotecue, Karioka"
     ],
     "images": [
-      "Tusok1.png",
-      "Tusok2.png",
-      "Tusok3.png",
-      "Tusok4.png",
-      "Tusok5.png",
-      "Tusok6.png",
-      "Tusok7.png",
-      "Tusok8.png",
-      "Tusok9.png",
-      "Tusok10.png"
+      "Photos/Tusok-Tusok/Tusok1.png",
+      "Photos/Tusok-Tusok/Tusok2.png",
+      "Photos/Tusok-Tusok/Tusok3.png",
+      "Photos/Tusok-Tusok/Tusok4.png",
+      "Photos/Tusok-Tusok/Tusok5.png",
+      "Photos/Tusok-Tusok/Tusok6.png",
+      "Photos/Tusok-Tusok/Tusok7.png",
+      "Photos/Tusok-Tusok/Tusok8.png",
+      "Photos/Tusok-Tusok/Tusok9.png",
+      "Photos/Tusok-Tusok/Tusok10.png"
     ],
     "video": "1OUx6uEUlgSv9ZW9gHh36zDy1_Jc92suJ",
     "code": [
@@ -371,7 +371,7 @@ window.GAMES = [
       "Ragdoll physics sandbox encounters",
       "Surreal low-poly visual style"
     ],
-    "cover": "LD2.jpg",
+    "cover": "Photos/Lucid%20Dreams/LD2.jpg",
     "tags": [
       "C#",
       "Unity",
@@ -388,15 +388,15 @@ window.GAMES = [
       "Built in Unity with stylized low-poly visuals"
     ],
     "images": [
-      "LD1.jpg",
-      "LD2.jpg",
-      "LD3.jpg",
-      "LD4.jpg",
-      "LD5.jpg",
-      "LD6.jpg",
-      "LD7.jpg",
-      "LD8.jpg",
-      "LD9.jpg"
+      "Photos/Lucid%20Dreams/LD1.jpg",
+      "Photos/Lucid%20Dreams/LD2.jpg",
+      "Photos/Lucid%20Dreams/LD3.jpg",
+      "Photos/Lucid%20Dreams/LD4.jpg",
+      "Photos/Lucid%20Dreams/LD5.jpg",
+      "Photos/Lucid%20Dreams/LD6.jpg",
+      "Photos/Lucid%20Dreams/LD7.jpg",
+      "Photos/Lucid%20Dreams/LD8.jpg",
+      "Photos/Lucid%20Dreams/LD9.jpg"
     ],
     "video": "1kv063gbKzSJPvY0CWHXFyyK4QKNBzn87",
     "code": [
@@ -422,7 +422,7 @@ window.GAMES = [
       "Enemy and boss patterns",
       "Score and power-ups"
     ],
-    "cover": "SC2.jpg",
+    "cover": "Photos/Space%20Shooter/SC2.jpg",
     "tags": [
       "Visual Studio Code",
       "Arcade Shooter"
@@ -437,11 +437,11 @@ window.GAMES = [
       "High score tracking for competitive replayability"
     ],
     "images": [
-      "SC1.jpg",
-      "SC2.jpg",
-      "SC3.jpg",
-      "SC4.jpg",
-      "SC5.jpg"
+      "Photos/Space%20Shooter/SC1.jpg",
+      "Photos/Space%20Shooter/SC2.jpg",
+      "Photos/Space%20Shooter/SC3.jpg",
+      "Photos/Space%20Shooter/SC4.jpg",
+      "Photos/Space%20Shooter/SC5.jpg"
     ],
     "video": "1OYMA6OVAEcyxVo2HKiDgOlDomQONDaPu",
     "code": [
@@ -503,7 +503,7 @@ window.GAMES = [
       "Dynamic scoring system",
       "Flip and win audio"
     ],
-    "cover": "MG3.jpg",
+    "cover": "Photos/Card%20Game/MG3.jpg",
     "tags": [
       "C#",
       "Visual Studio Code",
@@ -520,11 +520,11 @@ window.GAMES = [
       "Built with Unity using C#"
     ],
     "images": [
-      "MG1.jpg",
-      "MG2.jpg",
-      "MG3.jpg",
-      "MG4.jpg",
-      "MG5.jpg"
+      "Photos/Card%20Game/MG1.jpg",
+      "Photos/Card%20Game/MG2.jpg",
+      "Photos/Card%20Game/MG3.jpg",
+      "Photos/Card%20Game/MG4.jpg",
+      "Photos/Card%20Game/MG5.jpg"
     ],
     "video": "1dkgv5AIgh5xst3APH1VeCloFIrYqYScV",
     "code": [
@@ -564,7 +564,7 @@ window.ART = [
     "slug": "door-console",
     "title": "Door Console",
     "category": "3D Models",
-    "cover": "DC1.png",
+    "cover": "Photos/Door%20Console/DC1.png",
     "tags": [
       "Blender",
       "Maya",
@@ -579,9 +579,9 @@ window.ART = [
       "Includes multiple texture and color variants"
     ],
     "images": [
-      "DC1.png",
-      "DC2.png",
-      "DC3.png"
+      "Photos/Door%20Console/DC1.png",
+      "Photos/Door%20Console/DC2.png",
+      "Photos/Door%20Console/DC3.png"
     ],
     "video": ""
   },
@@ -589,7 +589,7 @@ window.ART = [
     "slug": "cooking-environment",
     "title": "Cooking Environment",
     "category": "3D Models",
-    "cover": "CE3.jpg",
+    "cover": "Photos/Cooking%20Environment/CE3.jpg",
     "tags": [
       "Blender",
       "Maya",
@@ -604,12 +604,12 @@ window.ART = [
       "Modular asset system"
     ],
     "images": [
-      "CE1.jpg",
-      "CE2.jpg",
-      "CE3.jpg",
-      "E1.jpg",
-      "E2.jpg",
-      "E3.jpg"
+      "Photos/Cooking%20Environment/CE1.jpg",
+      "Photos/Cooking%20Environment/CE2.jpg",
+      "Photos/Cooking%20Environment/CE3.jpg",
+      "Photos/Cooking%20Environment/E1.jpg",
+      "Photos/Cooking%20Environment/E2.jpg",
+      "Photos/Cooking%20Environment/E3.jpg"
     ],
     "video": ""
   },
@@ -617,7 +617,7 @@ window.ART = [
     "slug": "food-truck",
     "title": "Food Truck",
     "category": "3D Models",
-    "cover": "V1.jpg",
+    "cover": "Photos/Vehicle/V1.jpg",
     "tags": [
       "Blender",
       "Texturing",
@@ -632,10 +632,10 @@ window.ART = [
       "Ready for rendering and game engine integration (Unity, Unreal, Blender)"
     ],
     "images": [
-      "V1.jpg",
-      "V2.jpg",
-      "V3.jpg",
-      "V4.jpg"
+      "Photos/Vehicle/V1.jpg",
+      "Photos/Vehicle/V2.jpg",
+      "Photos/Vehicle/V3.jpg",
+      "Photos/Vehicle/V4.jpg"
     ],
     "video": ""
   },
@@ -643,7 +643,7 @@ window.ART = [
     "slug": "chef-character",
     "title": "Chef Character",
     "category": "3D Models",
-    "cover": "CC1.jpg",
+    "cover": "Photos/Chef%20Character/CC1.jpg",
     "tags": [
       "Blender",
       "Maya",
@@ -658,9 +658,9 @@ window.ART = [
       "Optimized for both real-time and rendered scenes"
     ],
     "images": [
-      "CC1.jpg",
-      "CC2.jpg",
-      "CC3.jpg"
+      "Photos/Chef%20Character/CC1.jpg",
+      "Photos/Chef%20Character/CC2.jpg",
+      "Photos/Chef%20Character/CC3.jpg"
     ],
     "video": ""
   },
@@ -668,7 +668,7 @@ window.ART = [
     "slug": "weapon",
     "title": "Weapon",
     "category": "3D Models",
-    "cover": "Weapon1.jpg",
+    "cover": "Photos/Weapon/Weapon1.jpg",
     "tags": [
       "Substance Painter",
       "Weapon Design",
@@ -683,8 +683,8 @@ window.ART = [
       "Rig-ready structure for animation or game use"
     ],
     "images": [
-      "Weapon1.jpg",
-      "Weapon2.jpg"
+      "Photos/Weapon/Weapon1.jpg",
+      "Photos/Weapon/Weapon2.jpg"
     ],
     "video": ""
   },
@@ -692,7 +692,7 @@ window.ART = [
     "slug": "sci-fi-control-room",
     "title": "Sci-Fi Control Room",
     "category": "3D Models",
-    "cover": "PPreview.png",
+    "cover": "Photos/Lucid%20Dreams/PPreview.png",
     "tags": [
       "Blender",
       "Maya",
@@ -708,12 +708,12 @@ window.ART = [
       "Suitable for cinematic, game, or VR applications"
     ],
     "images": [
-      "PPreview.png",
-      "P1.jpg",
-      "P2.png",
-      "P3.jpg",
-      "P4.jpg",
-      "P5.jpg"
+      "Photos/Lucid%20Dreams/PPreview.png",
+      "Photos/Pod/P1.jpg",
+      "Photos/Pod/P2.png",
+      "Photos/Pod/P3.jpg",
+      "Photos/Pod/P4.jpg",
+      "Photos/Lucid%20Dreams/P5.jpg"
     ],
     "video": ""
   },
@@ -721,7 +721,7 @@ window.ART = [
     "slug": "sci-fi-wall",
     "title": "Sci-Fi Wall",
     "category": "3D Models",
-    "cover": "W1.png",
+    "cover": "Photos/Wall/W1.png",
     "tags": [
       "Substance Painter",
       "Maya",
@@ -736,9 +736,9 @@ window.ART = [
       "Optimized for rendering and game engines"
     ],
     "images": [
-      "W1.png",
-      "W2.jpg",
-      "W3.jpg"
+      "Photos/Wall/W1.png",
+      "Photos/Wall/W2.jpg",
+      "Photos/Wall/W3.jpg"
     ],
     "video": ""
   },
@@ -746,7 +746,7 @@ window.ART = [
     "slug": "chess-piece",
     "title": "Chess Piece",
     "category": "3D Models",
-    "cover": "Chess1.jpg",
+    "cover": "Photos/Chess/Chess1.jpg",
     "tags": [
       "Blender",
       "Product Design",
@@ -761,9 +761,9 @@ window.ART = [
       "Balanced scene composition showcasing modeling and texturing skills"
     ],
     "images": [
-      "Chess1.jpg",
-      "Chess2.jpg",
-      "Chess3.jpg"
+      "Photos/Chess/Chess1.jpg",
+      "Photos/Chess/Chess2.jpg",
+      "Photos/Chess/Chess3.jpg"
     ],
     "video": ""
   },
@@ -771,7 +771,7 @@ window.ART = [
     "slug": "helicopter-island-scene",
     "title": "Helicopter Island Scene",
     "category": "Animations",
-    "cover": "H1.jpg",
+    "cover": "Photos/Helicopter/H1.jpg",
     "tags": [
       "Maya",
       "Animation",
@@ -787,14 +787,14 @@ window.ART = [
       "Includes windmill, trees, and house props"
     ],
     "images": [
-      "H1.jpg",
-      "H2.jpg",
-      "H3.jpg",
-      "H4.jpg",
-      "H5.jpg",
-      "H6.jpg",
-      "H7.jpg",
-      "H8.jpg"
+      "Photos/Helicopter/H1.jpg",
+      "Photos/Helicopter/H2.jpg",
+      "Photos/Helicopter/H3.jpg",
+      "Photos/Helicopter/H4.jpg",
+      "Photos/Helicopter/H5.jpg",
+      "Photos/Helicopter/H6.jpg",
+      "Photos/Helicopter/H7.jpg",
+      "Photos/Helicopter/H8.jpg"
     ],
     "video": "11Xq7OI4QvxzBae7jdit0i8cF5HEtGVX8"
   },
@@ -802,7 +802,7 @@ window.ART = [
     "slug": "billiards-room",
     "title": "Billiards Room",
     "category": "Animations",
-    "cover": "B1.jpg",
+    "cover": "Photos/Billiards/B1.jpg",
     "tags": [
       "Maya",
       "Physics Animation",
@@ -818,14 +818,14 @@ window.ART = [
       "Optimized for rendering and animation"
     ],
     "images": [
-      "B1.jpg",
-      "B2.jpg",
-      "B3.jpg",
-      "B4.jpg",
-      "B5.jpg",
-      "B6.jpg",
-      "B7.jpg",
-      "B8.jpg"
+      "Photos/Billiards/B1.jpg",
+      "Photos/Billiards/B2.jpg",
+      "Photos/Billiards/B3.jpg",
+      "Photos/Billiards/B4.jpg",
+      "Photos/Billiards/B5.jpg",
+      "Photos/Billiards/B6.jpg",
+      "Photos/Billiards/B7.jpg",
+      "Photos/Billiards/B8.jpg"
     ],
     "video": "1bLBMr42LabfQ65ekSJRjsQ6UgGTFkGO4"
   },
@@ -833,7 +833,7 @@ window.ART = [
     "slug": "set-drive-helicopter",
     "title": "Set Drive Helicopter",
     "category": "Animations",
-    "cover": "SD3.jpg",
+    "cover": "Photos/Set%20Driven/SD3.jpg",
     "tags": [
       "Maya",
       "Set Driven Keys",
@@ -849,12 +849,12 @@ window.ART = [
       "Optimized for rendering and real-time use"
     ],
     "images": [
-      "SD1.jpg",
-      "SD2.jpg",
-      "SD3.jpg",
-      "SD4.jpg",
-      "SD5.jpg",
-      "SD6.jpg"
+      "Photos/Set%20Driven/SD1.jpg",
+      "Photos/Set%20Driven/SD2.jpg",
+      "Photos/Set%20Driven/SD3.jpg",
+      "Photos/Set%20Driven/SD4.jpg",
+      "Photos/Set%20Driven/SD5.jpg",
+      "Photos/Set%20Driven/SD6.jpg"
     ],
     "video": "1uW7RSII1dEifzidpouniQ9AzJdEizruT"
   }
