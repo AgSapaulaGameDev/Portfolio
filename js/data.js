@@ -74,7 +74,7 @@ window.GAMES = [
       "Customer interaction system",
       "UI/UX and store customization"
     ],
-    "cover": "Photos/Minatamis/M2.png",
+    "cover": "Photos/Minatamis/M2.jpg",
     "tags": [
       "Unity",
       "Simulation",
@@ -92,15 +92,15 @@ window.GAMES = [
       "Optimized for PC with intuitive controls"
     ],
     "images": [
-      "Photos/Minatamis/M1.png",
-      "Photos/Minatamis/M2.png",
-      "Photos/Minatamis/M3.png",
-      "Photos/Minatamis/M4.png",
-      "Photos/Minatamis/M5.png",
-      "Photos/Minatamis/M6.png",
-      "Photos/Minatamis/M7.png",
-      "Photos/Minatamis/M8.png",
-      "Photos/Minatamis/M9.png"
+      "Photos/Minatamis/M1.jpg",
+      "Photos/Minatamis/M2.jpg",
+      "Photos/Minatamis/M3.jpg",
+      "Photos/Minatamis/M4.jpg",
+      "Photos/Minatamis/M5.jpg",
+      "Photos/Minatamis/M6.jpg",
+      "Photos/Minatamis/M7.jpg",
+      "Photos/Minatamis/M8.jpg",
+      "Photos/Minatamis/M9.jpg"
     ],
     "video": "16shUrsRO9GCC2So1PiTnQIcWvtAeX_ZX",
     "code": [],
@@ -692,7 +692,7 @@ window.ART = [
     "slug": "sci-fi-control-room",
     "title": "Sci-Fi Control Room",
     "category": "3D Models",
-    "cover": "Photos/Lucid%20Dreams/PPreview.png",
+    "cover": "Photos/Lucid%20Dreams/PPreview.jpg",
     "tags": [
       "Blender",
       "Maya",
@@ -708,9 +708,9 @@ window.ART = [
       "Suitable for cinematic, game, or VR applications"
     ],
     "images": [
-      "Photos/Lucid%20Dreams/PPreview.png",
+      "Photos/Lucid%20Dreams/PPreview.jpg",
       "Photos/Pod/P1.jpg",
-      "Photos/Pod/P2.png",
+      "Photos/Pod/P2.jpg",
       "Photos/Pod/P3.jpg",
       "Photos/Pod/P4.jpg",
       "Photos/Lucid%20Dreams/P5.jpg"
@@ -721,7 +721,7 @@ window.ART = [
     "slug": "sci-fi-wall",
     "title": "Sci-Fi Wall",
     "category": "3D Models",
-    "cover": "Photos/Wall/W1.png",
+    "cover": "Photos/Wall/W1.jpg",
     "tags": [
       "Substance Painter",
       "Maya",
@@ -736,7 +736,7 @@ window.ART = [
       "Optimized for rendering and game engines"
     ],
     "images": [
-      "Photos/Wall/W1.png",
+      "Photos/Wall/W1.jpg",
       "Photos/Wall/W2.jpg",
       "Photos/Wall/W3.jpg"
     ],

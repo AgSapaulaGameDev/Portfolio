@@ -19,7 +19,7 @@
 <style>.jumping #app{visibility:hidden}</style>
 </head>
 <body>
-<noscript><p style="padding:24px;color:#fff">This portfolio is interactive. <a href="classic.html">Open the classic version</a>.</p></noscript>
+<noscript><p style="padding:24px;color:#fff">This portfolio is interactive. Please turn on JavaScript to play through it.</p></noscript>
 <div id="app"></div>
 <template id="scene-tpl">
 <helmet>
@@ -629,7 +629,7 @@ a{color:#58A6FF}a:hover{color:#79C0FF}
         <span class="px" style="font-size: 9px; color: #3FB950">XP</span>
         <div style="flex: 1; height: 12px; border: 2px solid #E6EDF3; padding: 2px; background: #010409"><div style="{{xpBar}}"></div></div>
       </div>
-      <a href="classic.html" class="hudbtn hud-quick" style="font-size: 13px; color: #C9D1D9; text-decoration: none; border: 1px solid #30363D; padding: 8px 12px; background: #0D1117">Quick view (no game) ↗</a>
+      <div class="hud-quick" aria-hidden="true" style="flex: none; width: 172px"></div>
     </header>
 
     <button type="button" class="hudbtn hud-sound" onClick="{{toggleSound}}" aria-label="{{soundLabel}}" style="position: absolute; left: 24px; bottom: 20px; z-index: 60; height: 44px; padding: 0 14px; display: flex; align-items: center; gap: 10px; background: rgba(13, 17, 23, 0.9); border: 1px solid #30363D; border-radius: 999px; color: #E6EDF3; cursor: pointer">
