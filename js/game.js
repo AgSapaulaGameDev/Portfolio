@@ -201,11 +201,25 @@ class Component extends DCLogic {
       '</g></svg>';
     return { sky: uri(sky), front: uri(front), back: uri(back), mtn: uri(mtn), peak: uri(peakSvg), land: uri(landSvg), landSvg: landSvg, skySvg: sky, midSvg: mid, frontSvg: front, backSvg: back, mtnSvg: mtn, peakSvg: peakSvg };
   }
+  // phones: read the real stage height and where the profile photo sits, since the phone layout comes from CSS
+  measure() {
+    const st = document.querySelector('.stage');
+    if (!st) return;
+    this.stageH = st.clientHeight;
+    const ph = document.querySelector('.ps-photo');
+    if (ph) {
+      let x = 0, y = 0, e = ph;
+      while (e && e !== st) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; }
+      this.photoBox = { cx: x + ph.offsetWidth / 2, cy: y + ph.offsetHeight / 2, w: ph.offsetWidth };
+    }
+  }
   componentDidMount() {
     window.addEventListener('scroll', this.onScroll, { passive: true });
     document.addEventListener('scroll', this.onScroll, { capture: true, passive: true });
+    this.measure();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { this.measure(); this.setState({}); });
     this.pixelate();
-    this.onResize = () => { clearTimeout(this.pixTimer); this.pixTimer = setTimeout(() => this.pixelate(), 300); };
+    this.onResize = () => { this.measure(); this.setState({}); clearTimeout(this.pixTimer); this.pixTimer = setTimeout(() => this.pixelate(), 300); };
     window.addEventListener('resize', this.onResize);
     // index.html?level=N (from a level page's WORLD MAP button) opens straight on island N of the world map
     const lv = parseInt(new URLSearchParams(location.search).get('level'), 10);
@@ -380,12 +394,15 @@ class Component extends DCLogic {
   }
   pixelate() {
     if (typeof document === 'undefined') return;
-    const W = window.innerWidth || 1440, H = Math.min(920, Math.max(640, window.innerHeight || 900));
+    const W = window.innerWidth || 1440;
+    const H = W <= 760 ? (this.stageH || Math.max(480, window.innerHeight || 800)) : Math.min(920, Math.max(640, window.innerHeight || 900));
     const PX = W < 700 ? 3 : 4;
     const lw = Math.max(80, Math.round((W * 1.1) / PX)), lh = Math.max(60, Math.round((H * 1.1) / PX));
     const key = lw + 'x' + lh;
     if (this.pixKey === key) return;
-    this.pixKey = key;
+    // phones: browser toolbars showing/hiding nudge the height; the stretched art still fits, so skip the expensive repaint
+    if (W <= 760 && this.pixW === lw && this.pixH && Math.abs(lh - this.pixH) / this.pixH < 0.2) return;
+    this.pixKey = key; this.pixW = lw; this.pixH = lh;
     const make = (svg) => new Promise((res) => {
       const pal = [];
       (svg.match(/#[0-9A-Fa-f]{6}/g) || []).forEach((h) => { const c = [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; if (!pal.some((q) => q[0] === c[0] && q[1] === c[1] && q[2] === c[2])) pal.push(c); });
@@ -439,6 +456,9 @@ class Component extends DCLogic {
     const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
     const seg = (a, b) => clamp((p - a) / (b - a), 0, 1);
     const px = (v) => v.toFixed(1) + 'px';
+    const VW = (typeof window !== 'undefined' && window.innerWidth) || 1440;
+    const isM = VW <= 760; // phone layout
+    const MH = isM ? (this.stageH || Math.max(480, (typeof window !== 'undefined' && window.innerHeight) || 800)) : 0;
 
     const scenes = [
       { id: 'title', name: 'TITLE SCREEN', a: 0, b: 0.1, short: 'START', E: 0, z: 11 },
@@ -520,8 +540,13 @@ class Component extends DCLogic {
     // ---- Console boot sequence ----
     const INS_A = 0.09, INS_B = 0.13, CAB_A = 0.13, CAB_B = 0.16, CRT_A = 0.16, CRT_B = 0.185, LOAD_B = 0.205, SW_A = 0.205, SW_B = 0.215, ZOOM_A = 0.215, ZOOM_B = 0.26;
     const zoomT = ease(seg(ZOOM_A, ZOOM_B));
-    const zoom = 1 + zoomT * 1.974;
-    const rigBase = 'position: absolute; left: 50%; top: 50%; height: 72%; aspect-ratio: 760 / 600; transform-origin: 50% 33%; transform: translate(-50%, -50%) translate(' + px(-mx * 10 * (1 - zoomT)) + ', ' + px(-my * 6 * (1 - zoomT)) + ') translate(0, ' + (16.95 * zoomT).toFixed(3) + '%) scale(' + zoom.toFixed(4) + ');';
+    // phones: the console is sized to the screen width (desktop sizes it by height) and zooms until the TV screen fills the width
+    const bigRigW = 0.72 * MH * 760 / 600;
+    const rigW = isM ? Math.min(bigRigW, VW * 1.08) : 0, rigH = rigW * 600 / 760;
+    const zoom = isM ? 1 + zoomT * (VW / (0.614 * rigW) - 1) : 1 + zoomT * 1.974;
+    const rigBase = isM
+      ? 'position: absolute; left: 50%; top: 50%; width: ' + px(rigW) + '; height: ' + px(rigH) + '; transform-origin: 50% 33%; transform: translate(-50%, -50%) translate(0, ' + (16.95 * zoomT).toFixed(3) + '%) scale(' + zoom.toFixed(4) + ');'
+      : 'position: absolute; left: 50%; top: 50%; height: 72%; aspect-ratio: 760 / 600; transform-origin: 50% 33%; transform: translate(-50%, -50%) translate(' + px(-mx * 10 * (1 - zoomT)) + ', ' + px(-my * 6 * (1 - zoomT)) + ') translate(0, ' + (16.95 * zoomT).toFixed(3) + '%) scale(' + zoom.toFixed(4) + ');';
     const cartVisible = p < ZOOM_A + (ZOOM_B - ZOOM_A) * 0.7;
     const cartRig = rigBase + ' z-index: 30; pointer-events: none; visibility: ' + (cartVisible ? 'visible' : 'hidden') + ';';
 
@@ -537,6 +562,8 @@ class Component extends DCLogic {
     cTop = cTop + (insertedTop - cTop) * ins;
     let cScale = 1.45 - 0.62 * recede + 0.2 * Math.sin(suckE * Math.PI * 0.5);
     cScale = cScale + (1 - cScale) * fly;
+    // phones: the console is smaller, so the floating cartridge is enlarged on the title screen and shrinks to slot size as it flies in
+    if (isM) cScale *= 1 + (Math.max(1, bigRigW / rigW) - 1) * (1 - fly);
     const below = Math.max(0, (cTop + CH) - SLOT) / CH * 100;
     const wob = Math.sin(ins * Math.PI) * 4;
     const cart = 'position: absolute; left: ' + (50 - CW / 2).toFixed(2) + '%; top: ' + cTop.toFixed(2) + '%; width: ' + CW + '%; height: ' + CH + '%; transform: scale(' + cScale.toFixed(4) + ') rotate(' + wob.toFixed(2) + 'deg); ' + (below > 0 ? 'clip-path: inset(0 0 ' + below.toFixed(2) + '% 0);' : '');
@@ -552,7 +579,7 @@ class Component extends DCLogic {
     const maskCss = suck > 0.001 ? '-webkit-mask-image: ' + wMask + '; mask-image: ' + wMask + '; -webkit-mask-size: 7px 7px, 11px 11px; mask-size: 7px 7px, 11px 11px; -webkit-mask-composite: source-in; mask-composite: intersect;' : '';
     const worldStyle = 'position: absolute; inset: 0; overflow: hidden; transform-origin: 50% 48%; opacity: ' + (1 - clamp((suck - 0.86) / 0.12, 0, 1)).toFixed(3) + ';';
     const PW = (typeof window !== 'undefined' && window.innerWidth) || 1440;
-    const PH = Math.min(920, Math.max(640, (typeof window !== 'undefined' && window.innerHeight) || 900));
+    const PH = isM ? MH : Math.min(920, Math.max(640, (typeof window !== 'undefined' && window.innerHeight) || 900));
     const powder = [];
     if (suck > 0.0005 && suck < 0.9999) {
       this.powderData.forEach((d) => {
@@ -609,14 +636,19 @@ class Component extends DCLogic {
     const swT = seg(SW_A, SW_B);
     const sideOpen = clamp((zoomT - 0.85) / 0.15, 0, 1);
     const vw = (typeof window !== 'undefined' && window.innerWidth) || 1440;
-    const vh = Math.min(920, Math.max(640, (typeof window !== 'undefined' && window.innerHeight) || 900));
+    const vh = isM ? MH : Math.min(920, Math.max(640, (typeof window !== 'undefined' && window.innerHeight) || 900));
     const side = Math.max(0, (vw - vh * 1.6656) / 2) * (1 - sideOpen);
     const k = 0.3362 * zoom;
     const pVis = p >= SW_A && p < scenes[3].a + scenes[3].E + 0.01;
     const flashIn = p < SW_A ? 0 : Math.max(0, 1 - (p - SW_A) / 0.006);
     let pExtra = stageBg;
-    if (p < ZOOM_B) {
-      pExtra += 'opacity: ' + swT.toFixed(3) + '; transform-origin: 50% 50%; transform: translate(' + px(-mx * 10 * (1 - zoomT)) + ', calc(' + (-12.2 * (1 - zoomT)).toFixed(3) + '% + ' + px(-my * 6 * (1 - zoomT)) + ')) scale(' + k.toFixed(4) + '); clip-path: inset(0 ' + px(side) + ' round ' + px((20 / k) * (1 - zoomT)) + ');';
+    if (p < ZOOM_B && isM) {
+      // phones: the stage is scaled to the TV screen's width and clipped to its height; the clip opens once the zoom lands
+      const sw = 0.614 * rigW * zoom, sh = 0.467 * rigH * zoom, km = sw / VW;
+      const insetV = Math.max(0, (MH - sh / km) / 2) * (1 - sideOpen);
+      pExtra += 'opacity: ' + swT.toFixed(3) + '; transform-origin: 50% 50%; transform: translate(0, ' + px(-0.1695 * rigH * (1 - zoomT)) + ') scale(' + km.toFixed(4) + '); clip-path: inset(' + px(insetV) + ' 0 round ' + px((20 * zoom / km) * (1 - sideOpen)) + ');';
+    } else if (p < ZOOM_B) {
+      pExtra +='opacity: ' + swT.toFixed(3) + '; transform-origin: 50% 50%; transform: translate(' + px(-mx * 10 * (1 - zoomT)) + ', calc(' + (-12.2 * (1 - zoomT)).toFixed(3) + '% + ' + px(-my * 6 * (1 - zoomT)) + ')) scale(' + k.toFixed(4) + '); clip-path: inset(0 ' + px(side) + ' round ' + px((20 / k) * (1 - zoomT)) + ');';
     }
     const wfe = ease(scenes[3].fi);
     if (p >= ZOOM_B && wfe > 0) pExtra += 'transform-origin: 50% 40%; transform: scale(' + (1 + 0.12 * wfe).toFixed(4) + ');';
@@ -642,7 +674,7 @@ class Component extends DCLogic {
       { title: 'Bonus Stage', bonus: true, kind: '★ SECRET AREA · 3D MODELS & ANIMATION', role: 'Maya · Blender · Substance Painter', blurb: 'My 3D art collection: 8 models and 3 animated scenes.', built: ['3D models: Door Console, Cooking Environment, Food Truck, Chef Character, Weapon, Sci-Fi Control Room, Sci-Fi Wall, Chess Piece', 'Animations: Helicopter Island Scene, Billiards Room, Set Drive Helicopter', 'Modeling, texturing, lighting and animation'] }
     ];
     const N = games.length;
-    const SP = 380;
+    const SP = isM ? 240 : 380; // island spacing; tighter on phones so the neighbouring islands peek in
     const w = scenes[3];
     const mapT = clamp((w.local - 0.28) / 0.66, 0, 1);
     const pos = mapT * (N - 1);
@@ -706,7 +738,7 @@ class Component extends DCLogic {
     const starO = sk0[6] + (sk1[6] - sk0[6]) * skT;
     const worldStars = 'position: absolute; inset: 0 0 35% 0; pointer-events: none; opacity: ' + starO.toFixed(3) + '; background-image: radial-gradient(#FFFFFF 1px, transparent 1.4px), radial-gradient(#CFE3FF 1px, transparent 1.4px), radial-gradient(#FFFFFF 0.8px, transparent 1.2px); background-size: 160px 120px, 110px 90px, 70px 60px; background-position: 0 0, 50px 40px, 20px 15px; transform: translateX(' + px(-camX * 0.1) + ');';
 
-    const PHs = Math.min(920, Math.max(640, (typeof window !== 'undefined' && window.innerHeight) || 900));
+    const PHs = isM ? MH : Math.min(920, Math.max(640, (typeof window !== 'undefined' && window.innerHeight) || 900));
     const farIslands = this.farIslandData.map((f, i) => {
       const kind = i % 3 === 1 ? 'wreck' : 'weed';
       const y = (i % 2 ? 0.2 : 0.52) * PHs + ((i * 53) % 120);
@@ -785,14 +817,15 @@ class Component extends DCLogic {
     const splash = 'display: none;';
     const mv = (a0, b0) => ease(segW(a0, b0));
     const morphOn = inT && wraw > 0.26 && wraw < 0.88;
-    const cardCx = (vw > 1220 ? (vw - 1220) / 2 : 0) + 32 + 150, cardCy = 96 + 40 + 150;
+    const pb = isM && this.photoBox;
+    const cardCx = pb ? pb.cx : (vw > 1220 ? (vw - 1220) / 2 : 0) + 32 + 150, cardCy = pb ? pb.cy : 96 + 40 + 150;
     const go1 = mv(0.26, 0.38);
     const tgtCx = vw / 2, tgtCy = vh * 0.46;
     const endCx = vw / 2, endCy = 132 + (cy(0) - 74) + 27;
     const shrink = mv(0.66, 0.88);
     let mx0 = cardCx + (tgtCx - cardCx) * go1, my0 = cardCy + (tgtCy - cardCy) * go1;
     mx0 = mx0 + (endCx - mx0) * shrink; my0 = my0 + (endCy - my0) * shrink;
-    const big = 270 * (1 + 0.15 * go1);
+    const big = (pb ? pb.w + (Math.min(270, vw * 0.62) - pb.w) * go1 : 270) * (1 + 0.15 * go1);
     const size = big + (55 - big) * shrink;
     const pixT = segW(0.38, 0.52);
     const blocks = pixT <= 0 ? 0 : [48, 32, 22, 15, 10][Math.min(4, Math.floor(pixT * 5))];

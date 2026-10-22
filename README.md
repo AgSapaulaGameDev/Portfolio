@@ -9,17 +9,21 @@ index.html      Home: the Concept B scroll game (title → console boot → play
 level.html      One case-study template for every game (level.html?game=tidal-wins)
 bonus.html      3D models + animations gallery
 css/base.css    Colors, fonts, buttons, shared pieces
-css/home.css    Home scroll game
 css/pages.css   Level + bonus pages
 js/data.js      ← ALL your content lives here (projects, links, images, videos, code)
 js/common.js    Chiptune sound, contact form (EmailJS), helpers
 js/game.js      Concept B scroll game logic (stages, transitions, text content)
 js/scene-runtime.js  Small renderer that draws the template in index.html
 profile*.png    Your photo + pixelated steps used in the photo-to-pixel transition
+js/islands.js   Pixel island art for the level pages
 (js/home.js and css/home.css are from the older home page and are no longer used)
 js/level.js     Builds level.html from data.js
 js/bonus.js     Builds bonus.html from data.js
 ```
+
+## Phones
+The home page has a phone layout (screens 760px wide and below). It lives in the `@media (max-width: 760px)` block
+of the `<style>` inside index.html's template, plus the `isM` branches in js/game.js. The desktop layout is unaffected by both.
 
 ## Install on your GitHub Pages repo
 1. Rename your current `index.html` to `classic.html`. The "Quick view" button links to it.
