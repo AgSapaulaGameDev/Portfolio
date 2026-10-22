@@ -33,7 +33,16 @@
   const cover = $('#hCover');
   cover.style.backgroundImage = 'url("' + g.cover + '")';
   cover.setAttribute('aria-label', g.title + ' cover art');
-  cover.innerHTML = '<div class="island" aria-hidden="true"><div class="i-ripple" style="animation:ripple 1.8s ease-out infinite"></div><div class="i-cliff"></div><div class="i-sand"></div><div class="i-grass"></div><div class="i-sign">' + (i + 1) + '</div></div>';
+  /* Same sky + pixel island as this game's stop on the world map */
+  const SKY = window.ISLAND_SKY || [], ART = window.ISLAND_ART || [];
+  const sk = SKY[i % (SKY.length || 1)];
+  const hero = document.querySelector('.lv-hero');
+  if (sk && hero) {
+    hero.classList.add('sky-hero');
+    hero.style.setProperty('--sky', 'linear-gradient(' + [0, 22, 44, 62, 80, 100].map((pc, k) => sk[k] + ' ' + pc + '%').join(', ') + ')');
+    hero.style.setProperty('--stars', String(sk[6]));
+  }
+  if (ART.length) cover.insertAdjacentHTML('afterend', '<div class="hero-island" aria-hidden="true"><div class="hero-island-glow"></div>' + ART[i % ART.length] + '</div>');
   if (g.playUrl) { const pl = $('#hPlay'); pl.href = g.playUrl; pl.hidden = false; }
   if (!g.code.length) $('#hCode').hidden = true;
 

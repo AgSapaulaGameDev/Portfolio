@@ -4,7 +4,8 @@ A scroll-driven "game" portfolio: plain HTML + CSS + JavaScript with no build st
 
 ## Files
 ```
-index.html      Home: title → console boot → player select → world map → boss → credits
+index.html      Home: the Concept B scroll game (title → console boot → player select → world map → experience → credits).
+                The page layout lives in the <template> inside index.html; its animation logic is js/game.js.
 level.html      One case-study template for every game (level.html?game=tidal-wins)
 bonus.html      3D models + animations gallery
 css/base.css    Colors, fonts, buttons, shared pieces
@@ -12,7 +13,10 @@ css/home.css    Home scroll game
 css/pages.css   Level + bonus pages
 js/data.js      ← ALL your content lives here (projects, links, images, videos, code)
 js/common.js    Chiptune sound, contact form (EmailJS), helpers
-js/home.js      Scroll engine for the home page
+js/game.js      Concept B scroll game logic (stages, transitions, text content)
+js/scene-runtime.js  Small renderer that draws the template in index.html
+profile*.png    Your photo + pixelated steps used in the photo-to-pixel transition
+(js/home.js and css/home.css are from the older home page and are no longer used)
 js/level.js     Builds level.html from data.js
 js/bonus.js     Builds bonus.html from data.js
 ```
