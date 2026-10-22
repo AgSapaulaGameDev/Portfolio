@@ -702,7 +702,9 @@ class Component extends DCLogic {
         title: g.title,
         state: isA ? 'NOW PLAYING' : (done ? 'CLEARED' : 'LOCKED'),
         wrap: 'width: ' + SP + 'px; flex: none; position: relative; display: flex; flex-direction: column; align-items: center; gap: 10px; padding-top: ' + (cy(i) - 32) + 'px; box-sizing: border-box',
-        island: 'width: 124px; height: 76px; position: relative; flex: none; transition: transform .3s ease, filter .3s ease; ' + (isA ? 'transform: scale(1.14); filter: drop-shadow(0 0 16px rgba(88,166,255,.85));' : (done ? 'filter: drop-shadow(0 4px 6px rgba(0,0,0,.45));' : 'filter: grayscale(.7) brightness(.72);')),
+        // every state uses the same filter list (grayscale, brightness, drop-shadow) so Safari/WebKit can animate between them;
+        // with mismatched lists WebKit could stay stuck on the dim "locked" look
+        island: 'width: 124px; height: 76px; position: relative; flex: none; transition: transform .3s ease, filter .3s ease; ' + (isA ? 'transform: scale(1.14); filter: grayscale(0) brightness(1) drop-shadow(0 0 16px rgba(88,166,255,.85));' : (done ? 'transform: scale(1); filter: grayscale(0) brightness(1) drop-shadow(0 4px 6px rgba(0,0,0,.45));' : 'transform: scale(1); filter: grayscale(.7) brightness(.72) drop-shadow(0 0 0 rgba(0,0,0,0));')),
         rings: 'position: absolute; left: 50%; top: 44px; width: 0; height: 0; opacity: ' + (isA ? 1 : (done ? 0.6 : 0.4)) + ';',
         r1: 'position: absolute; left: 50%; top: 50%; width: 170px; height: 85px; margin: -42px 0 0 -85px; border-radius: 50%; background: radial-gradient(ellipse, rgba(140, 210, 255, 0) 55%, rgba(140, 210, 255, 0.22) 92%, rgba(220, 245, 255, 0.35200000000000004) 97%, rgba(140, 210, 255, 0) 100%);' + (isA ? ' animation: ringPulse 3s ease-in-out 0s infinite;' : ''),
         r2: 'position: absolute; left: 50%; top: 50%; width: 250px; height: 125px; margin: -62px 0 0 -125px; border-radius: 50%; background: radial-gradient(ellipse, rgba(140, 210, 255, 0) 55%, rgba(140, 210, 255, 0.16) 92%, rgba(220, 245, 255, 0.256) 97%, rgba(140, 210, 255, 0) 100%);' + (isA ? ' animation: ringPulse 3s ease-in-out 0.4s infinite;' : ''),
