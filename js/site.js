@@ -26,6 +26,27 @@
       (a.video ? '<span class="play">▶ Animation</span>' : '') + '</div><div class="body"><b>' + esc(a.title) + '</b><span>' + esc(a.category) + '</span></div></a>';
   }).join('');
 
+  /* GitHub contributions on the player card: last 26 weeks as a heatmap (data from a public contributions API) */
+  (function () {
+    const card = $('#ghCard'), grid = $('#ghGrid');
+    if (!card || !window.fetch) return;
+    fetch('https://github-contributions-api.jogruber.de/v4/AgSapaulaGameDev?y=last')
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((d) => {
+        const days = (d.contributions || []).filter((c) => c.date <= new Date().toISOString().slice(0, 10));
+        if (!days.length) return;
+        const WEEKS = 26;
+        // start on a Sunday so each column is one week (Sun at the top, like GitHub)
+        const lastDow = new Date(days[days.length - 1].date + 'T00:00:00').getDay();
+        const shown = days.slice(-(WEEKS - 1) * 7 - lastDow - 1);
+        grid.innerHTML = shown.map((c) => '<i data-l="' + c.level + '" title="' + c.count + ' on ' + c.date + '"></i>').join('') +
+          '<i class="pad"></i>'.repeat(6 - lastDow);
+        $('#ghTotal').textContent = (d.total && d.total.lastYear != null ? d.total.lastYear : days.reduce((n, c) => n + c.count, 0)).toLocaleString();
+        card.hidden = false;
+      })
+      .catch(() => { /* leave the card hidden if the API is down */ });
+  })();
+
   /* Contact links (LinkedIn only shows once it's filled in data.js) */
   const li = $('#linkedinLink');
   if (li) { if (S.linkedin) li.href = S.linkedin; else li.remove(); }
