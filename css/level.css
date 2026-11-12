@@ -154,6 +154,7 @@
   .lv .lv-hero-in { padding: 36px 16px 48px; gap: 32px; }
   .lv .lv-hero h1 { font-size: clamp(24px, 8vw, 34px); text-shadow: 3px 3px 0 #0B3D91; margin-bottom: 14px; }
   .lv .lv-hero .lead { font-size: 15px; margin-bottom: 20px; }
+  .lv #hWorld { font-size: 9px; letter-spacing: .1em; text-wrap: balance; }
   .lv .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
   .lv .facts div { padding: 9px 10px; border-right: 0; border-bottom: 2px solid rgba(88, 166, 255, .2); }
   .lv .facts div:nth-child(odd) { border-right: 2px solid rgba(88, 166, 255, .2); }
@@ -222,4 +223,7 @@
   .bonus-page .collectible .row { padding: 8px 10px; gap: 6px; }
   .bonus-page .collectible b { font-size: 13px; }
   .bonus-page .viewer-thumbs button { width: 64px; }
+  /* fade the right edge so it's clear the strip scrolls */
+  .bonus-page .viewer-thumbs { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); padding-right: 30px; scrollbar-width: none; }
+  .bonus-page .viewer-thumbs::-webkit-scrollbar { display: none; }
 }
