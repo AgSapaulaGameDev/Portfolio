@@ -75,5 +75,7 @@
   $('#thumbs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) { media = +b.dataset.k; renderViewer(); } });
 
   renderTabs();
-  select(items()[0].slug);
+  // bonus.html?item=<slug> (from the home page's 3D art grid) opens on that piece
+  const want = items().find((a) => a.slug === q.get('item'));
+  select(want ? want.slug : items()[0].slug, !!want);
 })();
