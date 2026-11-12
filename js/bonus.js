@@ -53,7 +53,7 @@
     const r = rarity(a);
     $('#dRarity').textContent = r[0]; $('#dRarity').style.color = r[1];
     $('#dTitle').textContent = a.title;
-    $('#dTags').innerHTML = a.tags.map((t) => '<span class="chip" style="border-color:#E3C27A;background:rgba(227,194,122,.1)">' + esc(t) + '</span>').join('');
+    $('#dTags').innerHTML = a.tags.map((t) => '<span class="chip">' + esc(t) + '</span>').join('');
     $('#dDesc').textContent = a.description;
     $('#dFeat').innerHTML = a.features.map((f) => '<li>' + esc(f) + '</li>').join('');
   }

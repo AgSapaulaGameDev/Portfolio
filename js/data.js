@@ -10,7 +10,7 @@ window.SITE = {
   "resume": "Photos/Resume_AgSapaula.pdf",
   "portrait": "Photos/ProfilePicture.png",
   "github": "https://github.com/agsapaulagamedev",
-  "linkedin": "",
+  "linkedin": "https://www.linkedin.com/in/angelo-gabriel-sapaula-532b123a2/",
   "itch": "",
   "facebook": "https://www.facebook.com/share/1AAi9UCcJ9/?mibextid=wwXIfr",
   "classicSite": "classic.html",

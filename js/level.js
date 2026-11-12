@@ -18,13 +18,11 @@
   $('#tbLevel').textContent = 'LEVEL ' + (i + 1);
   $('#tbTitle').textContent = g.title.toUpperCase();
   $('#backMap').href = mapUrl; $('#cMap').href = mapUrl;
-  $('#tbPrev').href = $('#cPrev').href = url(i - 1);
-  $('#tbNext').href = $('#cNext').href = url(i + 1);
-  $('#cPrevT').textContent = GAMES[(i - 1 + N) % N].title;
-  $('#cNextT').textContent = GAMES[(i + 1) % N].title;
+  $('#tbPrev').href = url(i - 1);
+  $('#tbNext').href = url(i + 1);
 
   /* Hero */
-  $('#hWorld').textContent = 'WORLD 1 · LEVEL ' + (i + 1) + ' · ' + g.kind;
+  $('#hWorld').textContent = 'LEVEL ' + String(i + 1).padStart(2, '0') + ' · ' + g.kind;
   $('#hTitle').textContent = g.title.toUpperCase();
   $('#hLead').textContent = g.blurb;
   const engine = g.kind.split(' · ').slice(1).join(' · ') || g.tags[0];
@@ -33,16 +31,7 @@
   const cover = $('#hCover');
   cover.style.backgroundImage = 'url("' + g.cover + '")';
   cover.setAttribute('aria-label', g.title + ' cover art');
-  /* Same sky + pixel island as this game's stop on the world map */
-  const SKY = window.ISLAND_SKY || [], ART = window.ISLAND_ART || [];
-  const sk = SKY[i % (SKY.length || 1)];
-  const hero = document.querySelector('.lv-hero');
-  if (sk && hero) {
-    hero.classList.add('sky-hero');
-    hero.style.setProperty('--sky', 'linear-gradient(' + [0, 22, 44, 62, 80, 100].map((pc, k) => sk[k] + ' ' + pc + '%').join(', ') + ')');
-    hero.style.setProperty('--stars', String(sk[6]));
-  }
-  if (ART.length) cover.insertAdjacentHTML('afterend', '<div class="hero-island" aria-hidden="true"><div class="hero-island-glow"></div>' + ART[i % ART.length] + '</div>');
+  if (g.featured) cover.insertAdjacentHTML('beforeend', '<span class="lv-best px">★ BEST PROJECT</span>');
   if (g.playUrl) { const pl = $('#hPlay'); pl.href = g.playUrl; pl.hidden = false; }
   if (!g.code.length) $('#hCode').hidden = true;
 
@@ -154,6 +143,79 @@
   /* Reveal sections on scroll */
   const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 }) : null;
   document.querySelectorAll('.reveal').forEach((el) => { if (io) io.observe(el); else el.classList.add('in'); });
+
+  /* Level complete: console-style shelf. Every project plus the bonus stage as a tile; the next project starts
+     selected. Clicking a tile selects it, clicking the selected tile (or PLAY / Enter) opens it, ◀ ▶ keys move. */
+  const ART0 = (window.ART || [])[0];
+  const apps = GAMES.map((x, k) => ({ title: x.title, kind: x.kind, blurb: x.blurb, cover: x.cover, href: url(k), n: String(k + 1).padStart(2, '0'), here: k === i }));
+  if (ART0) apps.push({ title: 'Bonus Stage', kind: '3D ART · ANIMATION', blurb: 'The 3D models and animated scenes I made in Maya and Blender.', cover: ART0.cover, href: 'bonus.html', n: '★', bonus: true });
+  const shelf = $('#shelf');
+  shelf.innerHTML = apps.map((a, k) => '<button type="button" class="tile' + (a.bonus ? ' bonus' : '') + '" role="option" aria-selected="false" data-k="' + k + '" style="background-image:url(&quot;' + esc(a.cover) + '&quot;)" aria-label="' + esc(a.title) + '">' +
+    '<span class="tile-n px">' + a.n + '</span>' + (a.here ? '<span class="tile-here px">YOU ARE HERE</span>' : '') + '<span class="tile-name">' + esc(a.title) + '</span></button>').join('');
+  const tiles = Array.from(shelf.querySelectorAll('.tile'));
+  let pickI = (i + 1) % N;
+  // scroll position that puts tile t in the middle of the shelf (measured on screen, so it ignores offsetParent)
+  const centreOf = (t) => { const r = t.getBoundingClientRect(), sr = shelf.getBoundingClientRect(); return shelf.scrollLeft + (r.left + r.width / 2) - (sr.left + sr.width / 2); };
+  const nearest = () => { const mid = shelf.getBoundingClientRect(); const c = mid.left + mid.width / 2; let best = 0, d = Infinity; tiles.forEach((t, j) => { const r = t.getBoundingClientRect(); const dd = Math.abs(r.left + r.width / 2 - c); if (dd < d) { d = dd; best = j; } }); return best; };
+  const choose = (k, quiet) => {
+    pickI = (k + apps.length) % apps.length;
+    const a = apps[pickI];
+    tiles.forEach((t, j) => { t.classList.toggle('on', j === pickI); t.setAttribute('aria-selected', String(j === pickI)); });
+    $('#shKind').textContent = a.n === '★' ? a.kind : 'LEVEL ' + a.n + ' · ' + a.kind;
+    $('#shTitle').textContent = a.title;
+    $('#shBlurb').textContent = a.blurb;
+    $('#shPlay').href = a.href;
+    $('#shPlay').textContent = a.here ? '↺ Replay' : '▶ Play';
+    shelf.scrollTo({ left: centreOf(tiles[pickI]), behavior: quiet ? 'auto' : 'smooth' });
+    if (!quiet) Sound.blip();
+  };
+  const launch = () => { Sound.blip('coin'); location.href = apps[pickI].href; };
+  /* Drag to scroll with the mouse (touch already swipes natively); letting go selects the tile nearest the middle */
+  let drag = null, dragged = false;
+  shelf.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag = { x: e.clientX, left: shelf.scrollLeft }; dragged = false;
+  });
+  window.addEventListener('pointermove', (e) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x;
+    if (!dragged && Math.abs(dx) > 5) { dragged = true; shelf.classList.add('dragging'); }
+    if (dragged) { e.preventDefault(); shelf.scrollLeft = drag.left - dx; }
+  });
+  window.addEventListener('pointerup', () => {
+    if (!drag) return;
+    drag = null;
+    if (dragged) { shelf.classList.remove('dragging'); const k = nearest(); if (k !== pickI) choose(k); else choose(k, true); }
+  });
+  // a drag shouldn't count as a click on the tile it ended on
+  shelf.addEventListener('click', (e) => { if (dragged) { e.stopPropagation(); e.preventDefault(); dragged = false; } }, true);
+  shelf.addEventListener('dragstart', (e) => e.preventDefault());
+  // phones: after a swipe settles, select whatever landed in the middle
+  let touching = false, settle;
+  shelf.addEventListener('touchstart', () => { touching = true; }, { passive: true });
+  shelf.addEventListener('touchend', () => { touching = false; }, { passive: true });
+  shelf.addEventListener('scroll', () => {
+    clearTimeout(settle);
+    settle = setTimeout(() => { if (touching || drag) return; const k = nearest(); if (k !== pickI) choose(k); }, 140);
+  }, { passive: true });
+  shelf.addEventListener('click', (e) => { const t = e.target.closest('.tile'); if (!t) return; if (+t.dataset.k === pickI) launch(); else choose(+t.dataset.k); });
+  $('#shPlay').addEventListener('click', (e) => { e.preventDefault(); launch(); });
+  let shelfSeen = false;
+  if ('IntersectionObserver' in window) new IntersectionObserver((es) => { shelfSeen = es[0].isIntersecting; }, { threshold: 0.4 }).observe(shelf);
+  document.addEventListener('keydown', (e) => {
+    if (lb.classList.contains('open') || e.target.closest('input, textarea')) return;
+    const active = shelfSeen || document.activeElement === shelf || shelf.contains(document.activeElement);
+    if (!active) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); choose(pickI + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); choose(pickI - 1); }
+    if (e.key === 'Enter') {
+      const f = document.activeElement;
+      if (f && f.classList && f.classList.contains('tile') && +f.dataset.k !== pickI) { e.preventDefault(); choose(+f.dataset.k); return; }
+      if (f === shelf || f === document.body || shelf.contains(f)) { e.preventDefault(); launch(); }
+    }
+  });
+  choose(pickI, true);
+  window.addEventListener('resize', () => choose(pickI, true));
 
   /* Keyboard: [ and ] switch levels */
   document.addEventListener('keydown', (e) => {

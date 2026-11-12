@@ -11,15 +11,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/level.css">
 </head>
-<body>
+<body class="lv bonus-page">
 
-<header class="topbar gold">
+<header class="topbar">
   <div class="topbar-in">
-    <a class="btn btn-ghost" href="index.html?level=9">◀ <span class="hide-sm">BACK TO </span>PORTFOLIO</a>
-    <div class="topbar-mid"><span class="px" style="font-size:10px;color:#E3C27A">★ BONUS STAGE</span></div>
+    <div class="lv-brand">
+      <a href="index.html" aria-label="Angelo Sapaula, home"><img src="logo.svg" alt="" width="46" height="28"></a>
+      <a class="btn btn-ghost" href="index.html?level=9">← <span class="hide-sm">Back to </span>Portfolio</a>
+    </div>
+    <div class="topbar-mid"><span class="px" id="tbLevel" style="color:var(--gold)">★ BONUS STAGE</span></div>
     <div class="topbar-right">
-      <a class="btn btn-ghost" href="level.html">LEVELS ▶</a>
+      <a class="btn btn-ghost" href="level.html">Projects ▶</a>
       <button type="button" class="btn btn-ghost sq hide-sm" id="soundBtn" aria-label="Turn chiptune sound on"><span data-sound-text>SOUND OFF</span></button>
     </div>
   </div>
@@ -29,12 +33,14 @@
   <section class="bonus-hero" aria-label="Bonus stage intro">
     <div id="stars" aria-hidden="true"></div>
     <div class="bonus-hero-in">
-      <span class="px" style="font-size:11px;color:#E3C27A;animation:blink 1.2s steps(1) infinite">SECRET AREA FOUND!</span>
+      <span class="eyebrow px bonus-found">SECRET AREA FOUND!</span>
       <h1>BONUS STAGE</h1>
-      <p class="display" style="margin:0;font-size:clamp(17px,2vw,20px);line-height:1.5;color:#C9D1D9;max-width:560px">3D models and animations I made in Maya and Blender, each shown as a collectible.</p>
+      <p class="lead">3D models and animations I made in Maya and Blender, each shown as a collectible.</p>
       <div class="tabs" role="tablist" aria-label="Collection" id="tabs"></div>
-      <span class="px" style="font-size:9px;color:#8B949E">INSPECTED <span id="got">0</span> / <span id="total">0</span></span>
-      <div style="width:min(420px,100%);height:14px;border:2px solid #E6EDF3;padding:2px"><div id="gotBar" style="height:100%;width:0;background:#E3C27A;transition:width .4s"></div></div>
+      <div class="bonus-progress">
+        <span class="px">INSPECTED <span id="got">0</span> / <span id="total">0</span></span>
+        <div class="bonus-bar"><div id="gotBar"></div></div>
+      </div>
     </div>
   </section>
 
@@ -54,9 +60,9 @@
     </div>
   </section>
 
-  <section class="section" aria-label="Collection" style="padding-top:0">
+  <section class="section" aria-label="Collection">
     <div class="container">
-      <span class="sec-label" style="color:#E3C27A">◆ COLLECTION</span>
+      <div class="lv-head"><div><p class="eyebrow px" style="color:var(--gold)">◆ COLLECTION</p><h2>All pieces</h2></div></div>
       <div class="collection" id="collection"></div>
     </div>
   </section>

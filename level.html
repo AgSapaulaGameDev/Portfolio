@@ -11,80 +11,85 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/level.css">
 </head>
-<body>
+<body class="lv">
 
 <header class="topbar">
   <div class="topbar-in">
-    <a class="btn btn-ghost" id="backMap" href="index.html">◀ <span class="hide-sm">ALL </span>PROJECTS</a>
+    <div class="lv-brand">
+      <a href="index.html" aria-label="Angelo Sapaula, home"><img src="logo.svg" alt="" width="46" height="28"></a>
+      <a class="btn btn-ghost" id="backMap" href="index.html">← <span class="hide-sm">All </span>Projects</a>
+    </div>
     <div class="topbar-mid">
-      <span class="px" id="tbLevel" style="font-size:10px;color:#3FB950">LEVEL 1</span>
-      <span class="px" id="tbTitle" style="font-size:10px;color:#fff"></span>
+      <span class="px" id="tbLevel">LEVEL 1</span>
+      <span class="px" id="tbTitle"></span>
     </div>
     <div class="topbar-right">
-      <a class="btn btn-ghost sq" id="tbPrev" href="#" aria-label="Previous level">◀</a>
-      <a class="btn btn-ghost sq" id="tbNext" href="#" aria-label="Next level">▶</a>
+      <a class="btn btn-ghost sq" id="tbPrev" href="#" aria-label="Previous project">◀</a>
+      <a class="btn btn-ghost sq" id="tbNext" href="#" aria-label="Next project">▶</a>
       <button type="button" class="btn btn-ghost sq hide-sm" id="soundBtn" aria-label="Turn chiptune sound on"><span data-sound-text>SOUND OFF</span></button>
     </div>
   </div>
 </header>
 
 <main id="level" class="entering">
-  <section class="lv-hero" aria-label="Level intro">
-    <div class="sea-waves" aria-hidden="true"></div>
+  <section class="lv-hero" aria-label="Project intro">
     <div class="lv-hero-in">
       <div class="lv-hero-text">
-        <span class="px" id="hWorld" style="font-size:11px;color:#79C0FF;letter-spacing:.15em"></span>
+        <span class="eyebrow px" id="hWorld"></span>
         <h1 id="hTitle"></h1>
         <p class="lead" id="hLead"></p>
         <div class="facts" id="hFacts"></div>
         <div class="hero-actions">
-          <a class="btn btn-white" href="#cutscene" style="font-size:11px;padding:16px 18px">▶ WATCH GAMEPLAY</a>
-          <a class="btn btn-blue" id="hPlay" href="#" target="_blank" rel="noopener" style="font-size:11px;padding:16px 18px" hidden>PLAY IT</a>
-          <a class="btn btn-ghost" id="hCode" href="#source" style="font-size:11px;padding:16px 18px">SOURCE CODE</a>
+          <a class="btn-px btn-px-primary px" href="#cutscene">▶ Watch gameplay</a>
+          <a class="btn-px px" id="hPlay" href="#" target="_blank" rel="noopener" hidden>Play it</a>
+          <a class="btn-px px" id="hCode" href="#source">Source code</a>
         </div>
       </div>
       <div class="lv-hero-art">
-        <div class="cover-frame" id="hCover" role="img"></div>
+        <div class="cover-frame" id="hCover" role="img">
+          <span class="lv-corner tl"></span><span class="lv-corner tr"></span><span class="lv-corner bl"></span><span class="lv-corner br"></span>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section reveal" id="cutscene" aria-label="Gameplay video">
     <div class="container">
-      <div class="sec-row"><span class="sec-label" style="color:#58A6FF">▶ CUTSCENE</span><span style="font-size:13px;color:#8B949E">Gameplay footage</span></div>
+      <div class="lv-head"><div><p class="eyebrow px">▶ CUTSCENE</p><h2>Gameplay footage</h2></div></div>
       <div class="tv-frame"><div class="video-box" id="videoBox"></div></div>
     </div>
   </section>
 
-  <section class="section reveal" aria-label="Quest log" style="padding-top:8px">
+  <section class="section reveal" aria-label="Quest log">
     <div class="container quest">
-      <div class="quest-l"><span class="sec-label" style="color:#58A6FF">QUEST LOG</span><h2>The mission</h2></div>
+      <div class="quest-l"><p class="eyebrow px">QUEST LOG</p><h2>The mission</h2></div>
       <div class="quest-r panel">
         <p id="qDesc"></p>
-        <div class="contrib" id="qContribWrap"><span>MY ROLE</span><p id="qContrib" style="margin:0;font-size:15px;line-height:1.65;color:#C9D1D9"></p></div>
+        <div class="contrib" id="qContribWrap"><span>MY ROLE</span><p id="qContrib"></p></div>
         <div class="tags" id="qTags"></div>
       </div>
     </div>
   </section>
 
-  <section class="section reveal" aria-label="Abilities unlocked" style="padding-top:8px">
+  <section class="section reveal" aria-label="Abilities unlocked">
     <div class="container">
-      <span class="sec-label" style="color:#3FB950">★ ABILITIES UNLOCKED · FEATURES</span>
+      <div class="lv-head"><div><p class="eyebrow px">★ ABILITIES UNLOCKED</p><h2>Features</h2></div></div>
       <div class="grid-auto" id="abilities"></div>
     </div>
   </section>
 
-  <section class="stats-band reveal" id="statsSec" aria-label="Results" hidden>
-    <div class="container section">
-      <span class="sec-label" style="color:#58A6FF">LEVEL STATS · RESULTS</span>
+  <section class="section stats-band reveal" id="statsSec" aria-label="Results" hidden>
+    <div class="container">
+      <div class="lv-head"><div><p class="eyebrow px">LEVEL STATS</p><h2>Results</h2></div></div>
       <div class="grid-auto" id="stats" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))"></div>
     </div>
   </section>
 
   <section class="section reveal" id="bossSec" aria-label="Hardest problem" hidden>
     <div class="container">
-      <span class="sec-label" style="color:#F85149">!! BOSS FIGHT · HARDEST PROBLEM</span>
+      <div class="lv-head"><div><p class="eyebrow px" style="color:var(--red)">!! BOSS FIGHT</p><h2>Hardest problem</h2></div></div>
       <div class="boss-box">
         <div><span style="color:#F85149">1 · THE PROBLEM</span><p id="bProblem"></p></div>
         <div><span style="color:#58A6FF">2 · THE STRATEGY</span><p id="bStrategy"></p></div>
@@ -95,7 +100,7 @@
 
   <section class="section reveal" aria-label="Screenshots">
     <div class="container">
-      <div class="sec-row"><span class="sec-label" style="color:#E3C27A">◆ LOOT · SCREENSHOTS</span><span id="lootCount" style="font-size:13px;color:#8B949E"></span></div>
+      <div class="lv-head"><div><p class="eyebrow px">◆ LOOT</p><h2>Screenshots</h2></div><span class="lv-note" id="lootCount"></span></div>
       <div class="loot-wrap">
         <button type="button" class="loot-main" id="lootMain" aria-label="Open screenshot full size"></button>
         <div class="loot-grid" id="lootGrid"></div>
@@ -105,26 +110,32 @@
 
   <section class="section reveal" id="source" aria-label="Source code">
     <div class="container">
-      <div class="sec-row"><span class="sec-label" style="color:#A371F7">✦ SOURCE SCROLL · CODE</span><a id="ghLink" href="#" target="_blank" rel="noopener" style="font-size:14px;font-weight:600">My GitHub →</a></div>
+      <div class="lv-head"><div><p class="eyebrow px">✦ SOURCE SCROLL</p><h2>Source code</h2></div><a class="btn btn-ghost" id="ghLink" href="#" target="_blank" rel="noopener">My GitHub ↗</a></div>
       <div class="code-box" id="codeBox">
         <div class="code-tabs" role="tablist" aria-label="Files" id="codeTabs"></div>
         <div class="code-head"><span id="codeTitle"></span><button type="button" class="copy" id="copyBtn">COPY</button></div>
         <pre class="code" id="codePre"><code id="codeEl"></code></pre>
       </div>
-      <p id="noCode" style="margin:0;color:#8B949E;font-size:15px" hidden>Code for this project is private — ask me about it in an interview.</p>
+      <p class="lv-note" id="noCode" hidden>Code for this project is private — ask me about it in an interview.</p>
     </div>
   </section>
 
-  <section class="complete" aria-label="Level complete">
+  <section class="complete" aria-label="Explore other projects">
     <div class="container complete-in">
-      <span class="px" style="font-size:clamp(20px,3.4vw,40px);color:#fff;text-shadow:4px 4px 0 #3FB950">LEVEL COMPLETE!</span>
-      <span style="font-size:15px;color:#C9D1D9">Continue your journey</span>
-      <div class="complete-row">
-        <a class="nav-card" id="cPrev" href="#"><span>◀ PREV LEVEL</span><b id="cPrevT"></b></a>
-        <a class="btn btn-blue" id="cMap" href="index.html">BACK TO PROJECTS</a>
-        <a class="nav-card next" id="cNext" href="#"><span>NEXT LEVEL ▶</span><b id="cNextT"></b></a>
+      <span class="px lv-complete">EXPLORE OTHER PROJECTS</span>
+      <span class="lv-note">Pick one and press Play</span>
+      <!-- console-style shelf: click a tile to select it, click it again (or PLAY / Enter) to open it; ◀ ▶ keys move -->
+      <div class="shelf" id="shelf" role="listbox" aria-label="Choose a project" tabindex="0"></div>
+      <div class="shelf-info" aria-live="polite">
+        <span class="eyebrow px" id="shKind"></span>
+        <b class="shelf-title" id="shTitle"></b>
+        <p class="lv-note" id="shBlurb"></p>
+        <div class="shelf-actions">
+          <a class="btn-px btn-px-primary px" id="shPlay" href="#">▶ Play</a>
+          <a class="btn-px px" id="cMap" href="index.html">All projects</a>
+        </div>
       </div>
-      <a href="bonus.html" class="px" style="font-size:9px;color:#E3C27A;text-decoration:none;margin-top:12px">★ SECRET: BONUS STAGE (3D ART &amp; ANIMATION) ▶</a>
+      <span class="shelf-hint px">◀ ▶ SELECT · ENTER PLAY</span>
     </div>
   </section>
 </main>
@@ -142,7 +153,6 @@
 </div>
 
 <script src="js/data.js"></script>
-<script src="js/islands.js"></script>
 <script src="js/common.js"></script>
 <script src="js/level.js"></script>
 </body>
