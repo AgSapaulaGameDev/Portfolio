@@ -12,7 +12,7 @@
     return '<article class="card project reveal' + (feat ? ' featured' : '') + '" id="project-' + esc(g.slug) + '">' +
       '<a class="thumb" href="' + page + '" style="background-image:url(&quot;' + esc(g.cover) + '&quot;)" aria-label="' + esc(g.title) + ' case study"><span class="num px">' + String(i + 1).padStart(2, '0') + '</span>' +
       (feat ? '<span class="best px">★ BEST PROJECT</span>' : '') + '</a>' +
-      '<div class="body"><span class="kind">' + esc(g.kind) + '</span><h3>' + esc(g.title) + '</h3><p>' + esc(g.blurb) + '</p>' +
+      '<div class="body"><span class="kind">' + esc(g.kind) + '</span><h3><a href="' + page + '">' + esc(g.title) + '</a></h3><p>' + esc(g.blurb) + '</p>' +
       (feat && g.built && g.built.length ? '<ul class="built">' + g.built.map((b) => '<li>' + esc(b) + '</li>').join('') + '</ul>' : '') +
       '<span class="role">' + esc(g.role) + '</span>' +
       '<div class="actions"><a class="btn btn-primary btn-sm" href="' + page + '">View project</a>' +
@@ -34,6 +34,8 @@
   const nav = $('#nav'), skip = $('#skipIntro'), links = Array.from(document.querySelectorAll('.nav-links a'));
   const sections = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   const wideDock = window.matchMedia('(min-width: 1300px)'); // keep in sync with the dock media query in css/site.css
+  const phone = window.matchMedia('(max-width: 760px)');
+  let lastY = window.scrollY;
   const onScroll = () => {
     const y = window.scrollY;
     const past = y >= introPx() - 4;
@@ -41,6 +43,13 @@
     const hold = Math.min(1, Math.max(0, (y - introPx()) / ((window.INTRO_PX || introPx()) - introPx() || 1)));
     document.documentElement.style.setProperty('--hold', hold.toFixed(4));
     nav.classList.toggle('solid', past);
+    // phones: the floating pill slides away while scrolling down and comes back on any scroll up
+    if (phone.matches && nav.classList.contains('docked') && !nav.classList.contains('open')) {
+      const dy = y - lastY;
+      if (dy > 6 && y > (window.INTRO_PX || introPx()) + 80) nav.classList.add('tucked');
+      else if (dy < -6) nav.classList.remove('tucked');
+    } else nav.classList.remove('tucked');
+    lastY = y;
     // landing below the intro (reload, back from a project): show the dock at once instead of waiting for the intro to catch up
     if (past && wideDock.matches && !flight && nav.classList.contains('dock-hidden')) {
       nav.classList.remove('dock-hidden');

@@ -201,7 +201,8 @@
   function drawBackground(mobile) {
     let g = skyc;                       // moon goes on the un-mirrored sky layer so it stays top-right
     g.clearRect(0, 0, W, H);
-    const mx = Math.round(W * 0.86), my = Math.round(H * 0.2), mr = mobile ? 6 : 9;
+    // phones: higher up so it clears the name; the hero text runs nearly full width there
+    const mx = Math.round(W * 0.86), my = Math.round(H * (mobile ? 0.11 : 0.2)), mr = mobile ? 6 : 9;
     for (let y = -mr - 3; y <= mr + 3; y++) for (let x = -mr - 3; x <= mr + 3; x++) {
       const d = x * x + y * y;
       if (d <= mr * mr) { g.fillStyle = COL.moon; g.fillRect(mx + x, my + y, 1, 1); }

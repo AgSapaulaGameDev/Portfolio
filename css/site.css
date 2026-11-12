@@ -55,7 +55,26 @@ a { color: var(--blue-2); }
   .nav.docked .wrap { max-width: none; padding: 0 10px 0 16px; }
   .project { scroll-margin-top: 84px; }
 }
-@media (max-width: 760px) { .nav.docked { inset: 8px 10px auto; height: 50px; } }
+/* Phones: compact two-column project grid like the 3D art grid (thumb, title, genre; the whole card is the link) */
+@media (max-width: 760px) {
+  #projectGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  #projectGrid .project:hover { transform: none; }
+  #projectGrid .project:not(.featured) .thumb { aspect-ratio: 4 / 3; }
+  #projectGrid .project .body { padding: 10px 12px; gap: 2px; }
+  #projectGrid .project h3 { order: -1; font-size: 15px; line-height: 1.25; }
+  #projectGrid .project .kind { font-size: 10px; letter-spacing: .04em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #projectGrid .project p, #projectGrid .project .built, #projectGrid .project .role, #projectGrid .project .actions { display: none; }
+  #projectGrid .project h3 a::after { content: ""; position: absolute; inset: 0; z-index: 3; }
+  #projectGrid .thumb .num { left: 8px; top: 8px; font-size: 7px; padding: 4px 5px; }
+  #projectGrid .project.featured .body { padding: 12px 14px 14px; gap: 4px; }
+  #projectGrid .project.featured h3 { font-size: 20px; }
+  #projectGrid .project.featured p { display: block; font-size: 13px; line-height: 1.5; }
+  #projectGrid .thumb .best { right: 8px; top: 8px; font-size: 7px; padding: 5px 6px; box-shadow: 2px 2px 0 #6B4E00; }
+}
+@media (max-width: 760px) {
+  .nav.docked { inset: 8px 10px auto; height: 50px; transition: transform .3s ease, opacity .3s ease, background .25s; }
+  .nav.docked.tucked { transform: translateY(calc(-100% - 12px)); opacity: 0; pointer-events: none; }
+}
 /* Logo hand-off from the TV screen (js/site.js): hidden dock -> flying logo -> dock unrolls down from the logo */
 .logo-flyer { position: fixed; z-index: 130; pointer-events: none; transform-origin: 0 0; will-change: transform; }
 @keyframes nav-unroll { from { clip-path: inset(0 0 calc(100% - 58px) 0 round 18px); } to { clip-path: inset(0 0 0 0 round 18px); } }
@@ -162,13 +181,14 @@ a { color: var(--blue-2); }
 /* Project + art grids */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
 .grid.art { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-.project { overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
+.project { position: relative; overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
 .project:hover { border-color: #484F58; transform: translateY(-2px); }
 .thumb { position: relative; aspect-ratio: 16 / 9; background: var(--surface-2) center / cover no-repeat; border-bottom: 1px solid var(--border); }
 .thumb .num { position: absolute; left: 12px; top: 12px; font-size: 9px; padding: 6px 7px; background: rgba(1, 4, 9, .8); color: #fff; border: 1px solid rgba(255, 255, 255, .2); }
 .project .body { padding: 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .project .kind { font-size: 12px; font-weight: 600; letter-spacing: .06em; color: var(--green); text-transform: uppercase; }
 .project h3 { font: 700 21px/1.2 'Space Grotesk', sans-serif; margin: 0; }
+.project h3 a { color: inherit; text-decoration: none; }
 .project p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--body); }
 .project .role { font-size: 13px; color: var(--muted); }
 .project .actions { display: flex; gap: 8px; margin-top: auto; padding-top: 10px; }
@@ -294,14 +314,14 @@ a { color: var(--blue-2); }
 .p-tags span { padding: 7px 10px; text-align: center; font: 8px 'Press Start 2P', monospace; color: var(--gold); border: 1px solid rgba(227, 179, 65, .5); background: rgba(227, 179, 65, .08); }
 @media (prefers-reduced-motion: reduce) { .p-online::before { animation: none; } }
 @media (max-width: 960px) {
-  .pselect { grid-template-columns: 1fr; }
+  .pselect { grid-template-columns: minmax(0, 1fr); }
   .p-card { max-width: 360px; width: 100%; margin: 0 auto; }
 }
 @media (max-width: 600px) {
   .p-bio { padding: 22px 18px 24px; }
   .p-foot { grid-template-columns: 1fr; gap: 20px; }
   .p-perks { grid-template-columns: 1fr; }
-  .p-tags { grid-template-columns: repeat(4, auto); justify-content: start; }
+  .p-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 }
 
 /* ---------- Hero: pixel scene (js/hero.js draws the hill + pixel me; --hold 0 -> 1 while the hero is pinned) ---------- */
