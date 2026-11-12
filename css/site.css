@@ -81,6 +81,8 @@ a { color: var(--blue-2); }
 @keyframes nav-item-pop { from { opacity: 0; transform: translateX(-10px); } }
 @keyframes nav-land { 0% { filter: drop-shadow(0 0 10px rgba(88, 166, 255, .9)); transform: scale(1.12); } 100% { filter: none; transform: none; } }
 @media (min-width: 1300px) {
+  /* before js/site.js has docked it, the plain top bar must never show on wide screens (it flashed on reload) */
+  .nav:not(.docked) { opacity: 0; visibility: hidden; transition: none; }
   .nav.docked { transition: opacity .3s ease; }
   .nav.docked.dock-hidden { opacity: 0; pointer-events: none; animation: none; }
   .nav.docked.dock-hidden .nav-links a { animation: none; }
