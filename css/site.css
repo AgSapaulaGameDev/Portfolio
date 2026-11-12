@@ -107,7 +107,7 @@ a { color: var(--blue-2); }
 .status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
 
 /* ---------- Intro (title screen + console boot) ---------- */
-.intro { position: relative; height: calc(4800px + clamp(640px, 100vh, 920px)); background: var(--bg); }
+.intro { position: relative; height: calc(6000px + clamp(640px, 100vh, 920px)); background: var(--bg); }
 .stage { position: sticky; top: 0; height: 100vh; max-height: 920px; min-height: 640px; overflow: hidden; }
 .boot-cap { bottom: 48px !important; }
 .skip-intro { position: fixed; right: 24px; bottom: 24px; z-index: 90; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .5); background: rgba(13, 17, 23, .82); color: #fff; font: 600 13px/1 Inter, sans-serif; cursor: pointer; transition: opacity .25s, transform .25s; }
@@ -251,7 +251,7 @@ a { color: var(--blue-2); }
   :root { --nav-h: 58px; }
   .wrap { padding: 0 16px; }
   .brand-name { display: none; }
-  .intro { height: calc(4800px + max(480px, 100vh)); height: calc(4800px + max(480px, 100svh)); }
+  .intro { height: calc(6000px + max(480px, 100vh)); height: calc(6000px + max(480px, 100svh)); }
   .stage { height: 100vh; height: 100svh; min-height: 480px; max-height: none; }
   .t-kicker { font-size: 8px !important; line-height: 1.6; }
   .t-cue { padding: 10px 16px !important; gap: 10px !important; }

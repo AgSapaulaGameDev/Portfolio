@@ -282,7 +282,7 @@
     const a = window.INTRO_ANIM_PX || 3500, b = window.INTRO_PX || a + 1000, y = window.scrollY || 0;
     return Math.min(1, Math.max(0, (y - a) / (b - a)));
   };
-  const active = () => { const y = window.scrollY || 0, b = window.INTRO_PX || 4500; return !document.hidden && y > b * 0.5 && y < b + window.innerHeight * 1.2; };
+  const active = () => { const y = window.scrollY || 0, b = window.INTRO_PX || 6000; return !document.hidden && y > b * 0.5 && y < b + window.innerHeight * 1.2; };
 
   function frame(now) {
     raf = 0;
@@ -337,9 +337,9 @@
   const kick = () => { if (!raf && active()) { lastNow = 0; raf = requestAnimationFrame(frame); } if (!mraf && morphActive()) mraf = requestAnimationFrame(morph); };
 
   /* ---------- About card: pixel-me lands in the photo frame and resolves into the real photo ----------
-     Scroll-driven: 0 when the photo's top enters the bottom of the screen, 1 when the About section fills
-     the screen (its top reaches the bottom of the nav). Fall (0-.2), stand around as pixel-me (.2-.55), de-pixelate (.55-1). */
-  const M_FALL = 0.2, M_LAND = 0.55;
+     Scroll-driven (see morphTarget): 0 as the photo enters the bottom of the screen, 1 once it sits
+     a little above the middle. Fall (0-.2), stand around as pixel-me (.2-.45), de-pixelate (.45-1). */
+  const M_FALL = 0.2, M_LAND = 0.45;
   const photo = document.querySelector('.p-photo');
   const mcv = photo && photo.querySelector('.p-morph');
   const img = photo && photo.querySelector('img');
@@ -348,14 +348,13 @@
   const tiny = document.createElement('canvas'), tnx = tiny.getContext('2d');
   let mShown = -1, mraf = 0, mLast = 0;
   const MQ = 6;                                                  // screen px per sprite pixel inside the frame
-  const aboutSec = photo && photo.closest('section');
-  const navBar = document.getElementById('nav');
+  // 0 when the photo's top peeks in at the bottom of the screen, 1 once the photo's centre is ~42% down the screen,
+  // so the whole transition plays while the photo is in view (measured on the photo only: the wide-screen side dock
+  // is ~480px tall, so using the nav's height here finished the morph before the photo was even visible)
   const morphTarget = () => {
     const r = photo.getBoundingClientRect(), vh = window.innerHeight || 800;
-    const navH = navBar ? navBar.offsetHeight : 64;
-    const inset = aboutSec ? r.top - aboutSec.getBoundingClientRect().top : 0;   // photo's distance below the section top
-    const span = Math.max(1, vh - navH - inset);                                   // scroll needed from "photo enters" to "section fills screen"
-    return Math.min(1, Math.max(0, (vh - r.top) / span));
+    const start = vh * 0.92, end = vh * 0.42 - r.height / 2;
+    return Math.min(1, Math.max(0, (start - r.top) / Math.max(1, start - end)));
   };
   const morphActive = () => { if (!mcv || document.hidden) return false; const r = photo.getBoundingClientRect(); return r.bottom > -50 && r.top < (window.innerHeight || 800) + 50; };
 

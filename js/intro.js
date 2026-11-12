@@ -3,7 +3,7 @@
 // the animation plays over the first INTRO_ANIM_PX px; the finished hero then stays pinned for HERO_HOLD_PX more
 // so visitors land on it before the page scrolls on (keep .intro's height in css/site.css in sync)
 const INTRO_ANIM_PX = 3800;
-const HERO_HOLD_PX = 1000;
+const HERO_HOLD_PX = 2200;
 const INTRO_PX = INTRO_ANIM_PX + HERO_HOLD_PX;
 window.INTRO_ANIM_PX = INTRO_ANIM_PX;
 // scroll position (px) -> intro progress p. The p timeline is the original game's: title 0-0.1, boot 0.1-0.205, zoom 0.205-0.26
