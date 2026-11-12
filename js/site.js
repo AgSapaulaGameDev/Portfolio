@@ -11,7 +11,7 @@
     const feat = !!g.featured;
     return '<article class="card project reveal' + (feat ? ' featured' : '') + '" id="project-' + esc(g.slug) + '">' +
       '<a class="thumb" href="' + page + '" style="background-image:url(&quot;' + esc(g.cover) + '&quot;)" aria-label="' + esc(g.title) + ' case study"><span class="num px">' + String(i + 1).padStart(2, '0') + '</span>' +
-      (feat ? '<span class="best px">★ BEST PROJECT</span>' : '') + '</a>' +
+      (feat ? '<span class="best px">★ FEATURED PROJECT</span>' : '') + '</a>' +
       '<div class="body"><span class="kind">' + esc(g.kind) + '</span><h3><a href="' + page + '">' + esc(g.title) + '</a></h3><p>' + esc(g.blurb) + '</p>' +
       (feat && g.built && g.built.length ? '<ul class="built">' + g.built.map((b) => '<li>' + esc(b) + '</li>').join('') + '</ul>' : '') +
       '<span class="role">' + esc(g.role) + '</span>' +

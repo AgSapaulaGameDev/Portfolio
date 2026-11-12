@@ -31,7 +31,7 @@
   const cover = $('#hCover');
   cover.style.backgroundImage = 'url("' + g.cover + '")';
   cover.setAttribute('aria-label', g.title + ' cover art');
-  if (g.featured) cover.insertAdjacentHTML('beforeend', '<span class="lv-best px">★ BEST PROJECT</span>');
+  if (g.featured) cover.insertAdjacentHTML('beforeend', '<span class="lv-best px">★ FEATURED PROJECT</span>');
   if (g.playUrl) { const pl = $('#hPlay'); pl.href = g.playUrl; pl.hidden = false; }
   if (!g.code.length) $('#hCode').hidden = true;
 
