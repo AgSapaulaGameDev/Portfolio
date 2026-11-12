@@ -201,8 +201,22 @@
   function drawBackground(mobile) {
     let g = skyc;                       // moon goes on the un-mirrored sky layer so it stays top-right
     g.clearRect(0, 0, W, H);
-    // phones: higher up so it clears the name; the hero text runs nearly full width there
-    const mx = Math.round(W * 0.86), my = Math.round(H * (mobile ? 0.11 : 0.2)), mr = mobile ? 6 : 9;
+    let mx = Math.round(W * 0.86), my = Math.round(H * 0.2);
+    const mr = mobile ? 6 : 9;
+    // phones: the name is two lines, so the moon sits in the free space right of "ANGELO"
+    // (measured as fractions of the hero box so the intro's zoom transform doesn't skew it)
+    if (mobile) {
+      my = Math.round(H * 0.11);
+      const h1 = hero.querySelector('h1'), hr = hero.getBoundingClientRect();
+      if (h1 && h1.firstChild && h1.firstChild.nodeType === 3 && hr.width) {
+        const rg = document.createRange(); rg.selectNodeContents(h1.firstChild);
+        const r = rg.getBoundingClientRect(), free = hr.right - r.right;
+        if (r.width && free > hr.width * 0.18) {
+          mx = Math.round((r.right + free * 0.5 - hr.left) / hr.width * W);
+          my = Math.round((r.top + r.height / 2 - hr.top) / hr.height * H);
+        }
+      }
+    }
     for (let y = -mr - 3; y <= mr + 3; y++) for (let x = -mr - 3; x <= mr + 3; x++) {
       const d = x * x + y * y;
       if (d <= mr * mr) { g.fillStyle = COL.moon; g.fillRect(mx + x, my + y, 1, 1); }

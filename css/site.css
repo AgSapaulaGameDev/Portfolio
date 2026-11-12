@@ -267,7 +267,15 @@ a { color: var(--blue-2); }
   .hero-stats b { font-size: 20px; }
   .section { padding: 64px 0; }
   .sec-head { margin-bottom: 28px; }
-  .skill { grid-template-columns: 112px 1fr 36px; gap: 10px; }
+  /* skills: name + level on one line, full-width bar underneath */
+  .skills { gap: 12px; }
+  .skill-group, .toolbelt { padding: 18px 18px 16px; }
+  .skill-group h3 { margin-bottom: 12px; }
+  .skill { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name lvl" "bar bar"; gap: 6px 10px; padding: 6px 0; }
+  .skill > span { grid-area: name; }
+  .skill .bar { grid-area: bar; height: 6px; }
+  .skill em { grid-area: lvl; }
+  .toolbelt { margin-top: 12px; }
   .job { grid-template-columns: 1fr; padding: 20px; gap: 14px; }
   .crest { width: 44px; height: 44px; }
   .grid { grid-template-columns: 1fr; }
@@ -360,6 +368,19 @@ a { color: var(--blue-2); }
   .hero-hud div { padding: 8px 10px; }
   .hero-hud b { font-size: 11px; }
   .hero-cue { right: 16px; bottom: 16px; }
+}
+/* Phones only: hero with a two-line name (moon sits right of ANGELO, see js/hero.js), stacked buttons, even stats strip */
+@media (max-width: 760px) {
+  .hero-game .wrap { padding-top: calc(var(--nav-h) + 32px); }
+  .hero-game .eyebrow { margin-bottom: 12px; }
+  .hero-game h1 { font-size: clamp(30px, 9.2vw, 40px); line-height: 1.15; margin-bottom: 18px; }
+  .hero-game h1 span { display: block; }
+  .hero-game .hero-cta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-game .hero-cta .btn-px-primary { grid-column: 1 / -1; padding-block: 14px; font-size: 9px; }
+  .hero-game .hero-hud { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; }
+  .hero-game .hero-hud div { justify-content: space-between; gap: 8px; }
+  .hero-game .hero-hud span { font-size: 6px; line-height: 1.6; }
+  .hero-game .hero-hud b { font-size: 12px; }
 }
 @media (max-height: 700px) and (min-width: 761px) { .hero-game .lead { display: none; } }
 @media (prefers-reduced-motion: reduce) { .hero-cue b { animation: none; } }
